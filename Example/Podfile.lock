@@ -1,0 +1,14 @@
+PODS:
+  - TOMSMorphingLabel (0.1.0)
+
+DEPENDENCIES:
+  - TOMSMorphingLabel (from `../`)
+
+EXTERNAL SOURCES:
+  TOMSMorphingLabel:
+    :path: ../
+
+SPEC CHECKSUMS:
+  TOMSMorphingLabel: f4eca92ecaa5743870564f362e74cb3187576457
+
+COCOAPODS: 0.33.1
