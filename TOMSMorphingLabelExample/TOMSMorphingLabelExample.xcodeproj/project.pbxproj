@@ -11,13 +11,21 @@
 		A6843D65194910DE001D2D73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D64194910DE001D2D73 /* ViewController.swift */; };
 		A6843D68194910DE001D2D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6843D66194910DE001D2D73 /* Main.storyboard */; };
 		A6843D6A194910DE001D2D73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6843D69194910DE001D2D73 /* Images.xcassets */; };
-		A6843D76194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D75194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift */; };
 		A6843D8219491103001D2D73 /* TOMSMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D8019491103001D2D73 /* TOMSMorphingLabel.swift */; };
 		A6843D8319491103001D2D73 /* TOMSStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D8119491103001D2D73 /* TOMSStringExtensions.swift */; };
+		A6843D8519491187001D2D73 /* TOMStringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D8419491187001D2D73 /* TOMStringExtensionsTests.swift */; };
+		A6843D88194911AB001D2D73 /* TOMSStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D8119491103001D2D73 /* TOMSStringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A6843D70194910DE001D2D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6843D55194910DE001D2D73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6843D5C194910DE001D2D73;
+			remoteInfo = TOMSMorphingLabelExample;
+		};
+		A6843D86194911A6001D2D73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A6843D55194910DE001D2D73 /* Project object */;
 			proxyType = 1;
@@ -35,9 +43,9 @@
 		A6843D69194910DE001D2D73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6843D6F194910DE001D2D73 /* TOMSMorphingLabelExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOMSMorphingLabelExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6843D74194910DE001D2D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6843D75194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOMSMorphingLabelExampleTests.swift; sourceTree = "<group>"; };
 		A6843D8019491103001D2D73 /* TOMSMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOMSMorphingLabel.swift; sourceTree = "<group>"; };
 		A6843D8119491103001D2D73 /* TOMSStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOMSStringExtensions.swift; sourceTree = "<group>"; };
+		A6843D8419491187001D2D73 /* TOMStringExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOMStringExtensionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +108,7 @@
 		A6843D72194910DE001D2D73 /* TOMSMorphingLabelExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				A6843D75194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift */,
+				A6843D8419491187001D2D73 /* TOMStringExtensionsTests.swift */,
 				A6843D73194910DE001D2D73 /* Supporting Files */,
 			);
 			path = TOMSMorphingLabelExampleTests;
@@ -156,6 +164,7 @@
 			);
 			dependencies = (
 				A6843D71194910DE001D2D73 /* PBXTargetDependency */,
+				A6843D87194911A6001D2D73 /* PBXTargetDependency */,
 			);
 			name = TOMSMorphingLabelExampleTests;
 			productName = TOMSMorphingLabelExampleTests;
@@ -234,7 +243,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6843D76194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift in Sources */,
+				A6843D88194911AB001D2D73 /* TOMSStringExtensions.swift in Sources */,
+				A6843D8519491187001D2D73 /* TOMStringExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +255,11 @@
 			isa = PBXTargetDependency;
 			target = A6843D5C194910DE001D2D73 /* TOMSMorphingLabelExample */;
 			targetProxy = A6843D70194910DE001D2D73 /* PBXContainerItemProxy */;
+		};
+		A6843D87194911A6001D2D73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6843D5C194910DE001D2D73 /* TOMSMorphingLabelExample */;
+			targetProxy = A6843D86194911A6001D2D73 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -363,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -375,6 +391,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -383,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
