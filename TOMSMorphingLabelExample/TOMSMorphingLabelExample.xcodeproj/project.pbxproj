@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6843D63194910DE001D2D73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D62194910DE001D2D73 /* AppDelegate.swift */; };
+		A6843D65194910DE001D2D73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D64194910DE001D2D73 /* ViewController.swift */; };
+		A6843D68194910DE001D2D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6843D66194910DE001D2D73 /* Main.storyboard */; };
+		A6843D6A194910DE001D2D73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6843D69194910DE001D2D73 /* Images.xcassets */; };
+		A6843D76194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D75194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift */; };
+		A6843D8219491103001D2D73 /* TOMSMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D8019491103001D2D73 /* TOMSMorphingLabel.swift */; };
+		A6843D8319491103001D2D73 /* TOMSStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6843D8119491103001D2D73 /* TOMSStringExtensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A6843D70194910DE001D2D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6843D55194910DE001D2D73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6843D5C194910DE001D2D73;
+			remoteInfo = TOMSMorphingLabelExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A6843D5D194910DE001D2D73 /* TOMSMorphingLabelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOMSMorphingLabelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6843D61194910DE001D2D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6843D62194910DE001D2D73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A6843D64194910DE001D2D73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A6843D67194910DE001D2D73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A6843D69194910DE001D2D73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A6843D6F194910DE001D2D73 /* TOMSMorphingLabelExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOMSMorphingLabelExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6843D74194910DE001D2D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6843D75194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOMSMorphingLabelExampleTests.swift; sourceTree = "<group>"; };
+		A6843D8019491103001D2D73 /* TOMSMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOMSMorphingLabel.swift; sourceTree = "<group>"; };
+		A6843D8119491103001D2D73 /* TOMSStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOMSStringExtensions.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6843D5A194910DE001D2D73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6843D6C194910DE001D2D73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6843D54194910DE001D2D73 = {
+			isa = PBXGroup;
+			children = (
+				A6843D5F194910DE001D2D73 /* TOMSMorphingLabelExample */,
+				A6843D72194910DE001D2D73 /* TOMSMorphingLabelExampleTests */,
+				A6843D5E194910DE001D2D73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A6843D5E194910DE001D2D73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6843D5D194910DE001D2D73 /* TOMSMorphingLabelExample.app */,
+				A6843D6F194910DE001D2D73 /* TOMSMorphingLabelExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A6843D5F194910DE001D2D73 /* TOMSMorphingLabelExample */ = {
+			isa = PBXGroup;
+			children = (
+				A6843D7F19491103001D2D73 /* Classes */,
+				A6843D62194910DE001D2D73 /* AppDelegate.swift */,
+				A6843D64194910DE001D2D73 /* ViewController.swift */,
+				A6843D66194910DE001D2D73 /* Main.storyboard */,
+				A6843D69194910DE001D2D73 /* Images.xcassets */,
+				A6843D60194910DE001D2D73 /* Supporting Files */,
+			);
+			path = TOMSMorphingLabelExample;
+			sourceTree = "<group>";
+		};
+		A6843D60194910DE001D2D73 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A6843D61194910DE001D2D73 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6843D72194910DE001D2D73 /* TOMSMorphingLabelExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6843D75194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift */,
+				A6843D73194910DE001D2D73 /* Supporting Files */,
+			);
+			path = TOMSMorphingLabelExampleTests;
+			sourceTree = "<group>";
+		};
+		A6843D73194910DE001D2D73 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A6843D74194910DE001D2D73 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6843D7F19491103001D2D73 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A6843D8019491103001D2D73 /* TOMSMorphingLabel.swift */,
+				A6843D8119491103001D2D73 /* TOMSStringExtensions.swift */,
+			);
+			name = Classes;
+			path = ../../Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6843D5C194910DE001D2D73 /* TOMSMorphingLabelExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6843D79194910DE001D2D73 /* Build configuration list for PBXNativeTarget "TOMSMorphingLabelExample" */;
+			buildPhases = (
+				A6843D59194910DE001D2D73 /* Sources */,
+				A6843D5A194910DE001D2D73 /* Frameworks */,
+				A6843D5B194910DE001D2D73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TOMSMorphingLabelExample;
+			productName = TOMSMorphingLabelExample;
+			productReference = A6843D5D194910DE001D2D73 /* TOMSMorphingLabelExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A6843D6E194910DE001D2D73 /* TOMSMorphingLabelExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6843D7C194910DE001D2D73 /* Build configuration list for PBXNativeTarget "TOMSMorphingLabelExampleTests" */;
+			buildPhases = (
+				A6843D6B194910DE001D2D73 /* Sources */,
+				A6843D6C194910DE001D2D73 /* Frameworks */,
+				A6843D6D194910DE001D2D73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6843D71194910DE001D2D73 /* PBXTargetDependency */,
+			);
+			name = TOMSMorphingLabelExampleTests;
+			productName = TOMSMorphingLabelExampleTests;
+			productReference = A6843D6F194910DE001D2D73 /* TOMSMorphingLabelExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6843D55194910DE001D2D73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = TomKnig;
+				TargetAttributes = {
+					A6843D5C194910DE001D2D73 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					A6843D6E194910DE001D2D73 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = A6843D5C194910DE001D2D73;
+					};
+				};
+			};
+			buildConfigurationList = A6843D58194910DE001D2D73 /* Build configuration list for PBXProject "TOMSMorphingLabelExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A6843D54194910DE001D2D73;
+			productRefGroup = A6843D5E194910DE001D2D73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6843D5C194910DE001D2D73 /* TOMSMorphingLabelExample */,
+				A6843D6E194910DE001D2D73 /* TOMSMorphingLabelExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6843D5B194910DE001D2D73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6843D68194910DE001D2D73 /* Main.storyboard in Resources */,
+				A6843D6A194910DE001D2D73 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6843D6D194910DE001D2D73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6843D59194910DE001D2D73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6843D65194910DE001D2D73 /* ViewController.swift in Sources */,
+				A6843D8219491103001D2D73 /* TOMSMorphingLabel.swift in Sources */,
+				A6843D63194910DE001D2D73 /* AppDelegate.swift in Sources */,
+				A6843D8319491103001D2D73 /* TOMSStringExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6843D6B194910DE001D2D73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6843D76194910DE001D2D73 /* TOMSMorphingLabelExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6843D71194910DE001D2D73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6843D5C194910DE001D2D73 /* TOMSMorphingLabelExample */;
+			targetProxy = A6843D70194910DE001D2D73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A6843D66194910DE001D2D73 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6843D67194910DE001D2D73 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A6843D77194910DE001D2D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A6843D78194910DE001D2D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A6843D7A194910DE001D2D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = TOMSMorphingLabelExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A6843D7B194910DE001D2D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = TOMSMorphingLabelExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A6843D7D194910DE001D2D73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TOMSMorphingLabelExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		A6843D7E194910DE001D2D73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TOMSMorphingLabelExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6843D58194910DE001D2D73 /* Build configuration list for PBXProject "TOMSMorphingLabelExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6843D77194910DE001D2D73 /* Debug */,
+				A6843D78194910DE001D2D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6843D79194910DE001D2D73 /* Build configuration list for PBXNativeTarget "TOMSMorphingLabelExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6843D7A194910DE001D2D73 /* Debug */,
+				A6843D7B194910DE001D2D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A6843D7C194910DE001D2D73 /* Build configuration list for PBXNativeTarget "TOMSMorphingLabelExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6843D7D194910DE001D2D73 /* Debug */,
+				A6843D7E194910DE001D2D73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A6843D55194910DE001D2D73 /* Project object */;
+}

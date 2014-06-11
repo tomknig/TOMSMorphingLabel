@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  TOMMorphingLabelExample
+//  TOMSMorphingLabelExample
 //
-//  Created by Tom König on 08/06/14.
+//  Created by Tom König on 12/06/14.
 //  Copyright (c) 2014 TomKnig. All rights reserved.
 //
 
