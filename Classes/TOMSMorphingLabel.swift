@@ -22,7 +22,7 @@ class TOMSMorphingLabel: UILabel {
     @lazy var attributionStages: NSMutableDictionary[] = self.attributionStagesForNumberOfStages(self.numberOfAttributionStages)
     
     convenience init(frame: CGRect) {
-        self.init(frame: frame, animationDuration: 0.26, charAnimationOffset: 0.42, fps: 60)
+        self.init(frame: frame, animationDuration: 0.21, charAnimationOffset: 0.25, fps: 60)
     }
     
     init(frame: CGRect, animationDuration: Double, charAnimationOffset: Double, fps: Int) {
@@ -36,7 +36,7 @@ class TOMSMorphingLabel: UILabel {
     func attributionStagesForNumberOfStages(numberOfStages: Int) -> NSMutableDictionary[] {
         var attributionStages = NSMutableDictionary[]()
         
-        let minFontSize: Float = Float(self.font.pointSize) / 1.61
+        let minFontSize: Float = Float(self.font.pointSize) / (1.61 * 2)
         let fontRatio: Float = minFontSize / Float(self.font.pointSize)
         let fontPadding: Float = 1 - fontRatio
         
@@ -59,10 +59,10 @@ class TOMSMorphingLabel: UILabel {
             return font
         }
         
-        for i in 0...numberOfStages {
+        for i in 0..numberOfStages {
             var attributionStage = NSMutableDictionary()
             
-            let progress = ease(Float(i) / Float(numberOfStages))
+            let progress = ease(Float(i) / Float(numberOfStages - 1))
             let textColor = textColorWithAlpha(CGFloat(progress))
             attributionStage[NSForegroundColorAttributeName] = textColor
             
@@ -110,7 +110,7 @@ class TOMSMorphingLabel: UILabel {
             dispatch_async(dispatch_get_main_queue(), {
                 let stage = self.currentAttributionStage
                 
-                if (self.currentAttributionStage++ > self.numberOfAttributionStages) {
+                if (self.currentAttributionStage++ >= self.numberOfAttributionStages) {
                     self.endAnimation()
                 } else {
                     self.applyAttributedStringForStage(stage, string: self.attributedText.string)
@@ -121,12 +121,6 @@ class TOMSMorphingLabel: UILabel {
     
     func applyAttributedStringForStage(stage: Int, string: String) {
         var mutableString = NSMutableAttributedString(string: string)
-        
-        func applyableIndexForOffset(offset: Int) -> Int {
-            var retval = offset < 0 ? 0 : offset
-            retval = retval > self.numberOfAttributionStages ? self.numberOfAttributionStages : retval
-            return retval
-        }
         
         struct AnimationDirection {
             static func entryPoint(location: Int, middle: Int) -> Double {
@@ -145,7 +139,7 @@ class TOMSMorphingLabel: UILabel {
                 let entryPoint = AnimationDirection.entryPoint(range.location, middle: middle) * self.charAnimationOffset * Double(self.numberOfAttributionStages)
                 
                 var idx = Int(offset - entryPoint)
-                idx = min(self.numberOfAttributionStages, max(0, idx))
+                idx = min(self.numberOfAttributionStages - 1, max(0, idx))
                 
                 var attributionStage: NSMutableDictionary = self.attributionStages[idx]
                 let kerning = attributionStage[kernPercentageAttributeName] as CGFloat
@@ -158,7 +152,7 @@ class TOMSMorphingLabel: UILabel {
         }
         
         applyMutations(self.rangesOfAdditions, Double(stage) * (1 + self.charAnimationOffset))
-        applyMutations(self.rangesOfDeletions, Double(self.numberOfAttributionStages - stage + 1))
+        applyMutations(self.rangesOfDeletions, Double(self.numberOfAttributionStages - stage))
         
         self.attributedText =  mutableString
     }
