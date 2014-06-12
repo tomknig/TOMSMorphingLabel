@@ -5,7 +5,7 @@ TOMSMorphingLabel is written in Swift :)
 
 ## Demo
 
-![Screen1](https://raw.githubusercontent.com/mtonio91/AMSmoothAlert/master/screenCapture.gif)
+![Screen1](demo.gif)
 
 ## Installation with CocoaPods
 
