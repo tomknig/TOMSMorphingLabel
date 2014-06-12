@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "TOMSMorphingLabel"
   s.version          = "0.1.0"
-  s.summary          = "TOMSMorphingLabel is a custom Label that provides morphing transitions to new content."
+  s.summary          = "TOMSMorphingLabel provides configurable morphing transitions between string values."
   s.homepage         = "https://github.com/TomKnig/TOMSMorphingLabel"
   s.license          = 'MIT'
   s.author           = { "TomKnig" => "hi@tomknig.de" }
