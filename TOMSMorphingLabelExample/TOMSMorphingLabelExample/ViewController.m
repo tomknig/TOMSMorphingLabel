@@ -1,0 +1,62 @@
+//
+//  ViewController.m
+//  TOMSMorphingLabelExample
+//
+//  Created by Tom König on 13/06/14.
+//  Copyright (c) 2014 TomKnig. All rights reserved.
+//
+
+#import "ViewController.h"
+#import <TOMSMorphingLabel/TOMSMorphingLabel.h>
+
+@interface ViewController ()
+@property (nonatomic, assign) NSInteger idx;
+@property (nonatomic, strong) NSArray *textValues;
+@end
+
+@implementation ViewController
+            
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.idx = 0;
+    
+    CGRect frame = CGRectMake(0, 42, self.view.frame.size.width, 42);
+    TOMSMorphingLabel *label = [[TOMSMorphingLabel alloc] initWithFrame:frame];
+    
+    label.font = [UIFont systemFontOfSize:32];
+    label.textColor = [UIColor colorWithRed:0.102 green:0.839 blue:0.992 alpha: 1];
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    [self.view addSubview:label];
+    [self toggleTextForLabel:label];
+}
+
+#pragma mark - toggling text
+
+- (NSArray *)textValues
+{
+    if (!_textValues) {
+        _textValues = @[
+                        @"Swift",
+                        @"Swiftilicious",
+                        @"delicious"
+                        ];
+    }
+    return _textValues;
+}
+
+- (void)setIdx:(NSInteger)idx
+{
+    _idx = MAX(0, MIN(idx, idx % [self.textValues count]));
+}
+
+- (void)toggleTextForLabel:(UILabel *)label
+{
+    label.text = self.textValues[self.idx++];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self toggleTextForLabel:label];
+    });
+}
+
+@end

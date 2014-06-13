@@ -1,7 +1,6 @@
 # TOMSMorphingLabel
-TOMSMorphingLabel provides configurable morphing transitions between string values.
+TOMSMorphingLabel provides configurable morphing transitions between text values of a label.
 Triggering the animation is as easy as setting the labels `text` property.
-TOMSMorphingLabel is written in Swift :)
 
 ## Demo
 
@@ -31,7 +30,7 @@ self.view.addSubview(label)
 Setting - and particularly changing - the labels text property will automatically morph the labels previous text to the new value.
 
 ```objective-c
-label.text = "Swift"
+label.text = @"Swift";
 ```
 
 Note that the label will execute only one morph transition at a time. If the text value of the label changes during a transition - even if it changes multiple times - the label will invoke a transition to the youngest text value that was set.
