@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#define kTOMSDictionaryKeyMergedString @"mergedString"
+#define kTOMSDictionaryKeyAdditionRanges @"additionRanges"
+#define kTOMSDictionaryKeyDeletionRanges @"deletionRanges"
+
 @interface NSString (Morphing)
+
+- (NSDictionary *)toms_mergeIntoString:(NSString *)string;
+
+- (NSDictionary *)toms_mergeIntoString:(NSString *)string lookAheadRadius:(NSUInteger)lookAheadRadius;
 
 @end

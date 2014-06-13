@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSString+Morphing.h"
 
 @interface TOMSMorphingLabel : UILabel
 
