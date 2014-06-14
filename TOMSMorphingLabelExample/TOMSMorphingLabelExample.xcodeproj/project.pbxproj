@@ -31,6 +31,13 @@
 			remoteGlobalIDString = A63331FD194B128300741D78;
 			remoteInfo = TOMSMorphingLabelExample;
 		};
+		A6F17826194B2A9B0050E5DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A63331F6194B128300741D78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A63331FD194B128300741D78;
+			remoteInfo = TOMSMorphingLabelExample;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -180,6 +187,7 @@
 			dependencies = (
 				A6333216194B128300741D78 /* PBXTargetDependency */,
 				A6F17825194B2A9B0050E5DF /* PBXTargetDependency */,
+				A6F17827194B2A9B0050E5DF /* PBXTargetDependency */,
 			);
 			name = TOMSMorphingLabelExampleTests;
 			productName = TOMSMorphingLabelExampleTests;
@@ -307,6 +315,11 @@
 			target = A63331FD194B128300741D78 /* TOMSMorphingLabelExample */;
 			targetProxy = A6F17824194B2A9B0050E5DF /* PBXContainerItemProxy */;
 		};
+		A6F17827194B2A9B0050E5DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A63331FD194B128300741D78 /* TOMSMorphingLabelExample */;
+			targetProxy = A6F17826194B2A9B0050E5DF /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -423,6 +436,7 @@
 		};
 		A6333222194B128300741D78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8541747CA2749838112C6CE /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -443,6 +457,7 @@
 		};
 		A6333223194B128300741D78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8541747CA2749838112C6CE /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
 				FRAMEWORK_SEARCH_PATHS = (

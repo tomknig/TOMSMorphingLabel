@@ -8,20 +8,29 @@
 
 #import "TOMSMorphingLabel.h"
 
-#define kTOMSKernPercentageAttributeName @"kTOMSKernPercentageAttributeName"
+#define kTOMSKernFactorAttributeName @"kTOMSKernFactorAttributeName"
 
 @interface TOMSMorphingLabel ()
 
-@property (readonly, nonatomic, assign, getter=isAnimating) BOOL animating;
 @property (readonly, nonatomic, assign) NSUInteger numberOfAttributionStages;
 @property (readonly, nonatomic, strong) NSArray *attributionStages;
+@property (atomic, assign, getter=isAnimating) BOOL animating;
+
+@property (atomic, assign) NSInteger attributionStage;
+@property (atomic, strong) NSArray *deletionRanges;
+@property (atomic, strong) NSArray *additionRanges;
+@property (atomic, strong) NSString *nextText;
+@property (atomic, strong) NSString *targetText;
 
 @end
 
 @implementation TOMSMorphingLabel
 @synthesize attributionStages = _attributionStages;
+@synthesize attributionStage = _attributionStage;
+@synthesize deletionRanges = _deletionRanges;
+@synthesize additionRanges = _additionRanges;
 
-#pragma mark - initialization
+#pragma mark - Initialization
 
 - (instancetype)init
 {
@@ -64,7 +73,7 @@
     self.fps = 60;
 }
 
-#pragma mark - setters
+#pragma mark - Setters
 
 - (void)numberOfAttributionStagesShouldChange
 {
@@ -88,7 +97,7 @@
     }
 }
 
-#pragma mark - getters
+#pragma mark - Getters
 
 - (CGFloat)easedValue:(CGFloat)p
 {
@@ -110,31 +119,193 @@
 
 - (NSArray *)attributionStages
 {
-    NSMutableArray *attributionStages = [[NSMutableArray alloc] initWithCapacity:self.numberOfAttributionStages];
+    if (!_attributionStages) {
+        NSMutableArray *attributionStages = [[NSMutableArray alloc] initWithCapacity:self.numberOfAttributionStages];
+        
+        CGFloat minFontSize = self.font.pointSize / self.characterShrinkFactor;
+        CGFloat fontRatio = minFontSize / self.font.pointSize;
+        CGFloat fontPadding = 1 - fontRatio;
+        
+        CGFloat progress, fontScale;
+        UIColor *color;
+        
+        for (int i = 0; i < self.numberOfAttributionStages; i++) {
+            NSMutableDictionary *attributionStage = [[NSMutableDictionary alloc] init];
+            
+            progress = [self easedValue:(i / (self.numberOfAttributionStages - 1))];
+            color = [self textColorWithAlpha:progress];
+            attributionStage[NSForegroundColorAttributeName] = color;
+            
+            fontScale = fontRatio + progress * fontPadding;
+            attributionStage[NSFontAttributeName] = [self fontForScale:fontScale];
+            
+            attributionStage[kTOMSKernFactorAttributeName] = [NSNumber numberWithFloat:1 - progress];
+            
+            [attributionStages addObject:attributionStage];
+        }
+        
+        _attributionStages = attributionStages;
+    }
+    return _attributionStages;
+}
+
+#pragma mark - Morphing: Helpers
+
+- (NSArray *)scalarRangesInArrayOfRanges:(NSArray *)ranges
+{
+    NSMutableArray *scalarRanges = [[NSMutableArray alloc] init];
     
-    CGFloat minFontSize = self.font.pointSize / self.characterShrinkFactor;
-    CGFloat fontRatio = minFontSize / self.font.pointSize;
-    CGFloat fontPadding = 1 - fontRatio;
-    
-    CGFloat progress, fontScale;
-    UIColor *color;
-    
-    for (int i = 0; i < self.numberOfAttributionStages; i++) {
-        NSMutableDictionary *attributionStage = [[NSMutableDictionary alloc] init];
-        
-        progress = [self easedValue:(i / (self.numberOfAttributionStages - 1))];
-        color = [self textColorWithAlpha:progress];
-        attributionStage[NSForegroundColorAttributeName] = color;
-        
-        fontScale = fontRatio + progress * fontPadding;
-        attributionStage[NSFontAttributeName] = [self fontForScale:fontScale];
-        
-        attributionStage[kTOMSKernPercentageAttributeName] = [NSNumber numberWithFloat:1 - progress];
-        
-        [attributionStages addObject:attributionStage];
+    for (NSValue *value in ranges) {
+        NSRange range = [value rangeValue];
+        if (range.length > 1) {
+            for (int i = 0; i < range.length; ++i) {
+                [scalarRanges addObject:[NSValue valueWithRange:NSMakeRange(range.location + i, 1)]];
+            }
+        } else {
+            [scalarRanges addObject:value];
+        }
     }
     
-    return attributionStages;
+    return scalarRanges;
+}
+
+#pragma mark - Morphing: Atomic Getters
+
+- (NSInteger)attributionStage
+{
+    @synchronized (self) {
+        return _attributionStage;
+    }
+}
+
+- (NSArray *)additionRanges
+{
+    @synchronized (self) {
+        return _additionRanges;
+    }
+}
+
+- (NSArray *)deletionRanges
+{
+    @synchronized (self) {
+        return _deletionRanges;
+    }
+}
+
+#pragma mark - Morphing: Atomic Getters
+
+- (void)setText:(NSString *)text
+{
+    self.nextText = text;
+    [self beginMorphing];
+}
+
+- (void)setAttributionStage:(NSInteger)attributionStage
+{
+    @synchronized (self) {
+        _attributionStage = attributionStage;
+        [self applyAttributionStage:_attributionStage toString:self.text];
+    }
+}
+
+- (void)setAdditionRanges:(NSArray *)additionRanges
+{
+    @synchronized (self) {
+        _additionRanges = [self scalarRangesInArrayOfRanges:additionRanges];
+    }
+}
+
+- (void)setDeletionRanges:(NSArray *)deletionRanges
+{
+    @synchronized (self) {
+        _deletionRanges = [self scalarRangesInArrayOfRanges:deletionRanges];
+    }
+}
+
+#pragma mark - Morphing: Animation
+
+- (NSString *)prepareMorphing
+{
+    if (self.nextText) {
+        NSString *newText;
+        
+        if (self.text) {
+            NSDictionary *mergeResult = [self.nextText toms_mergeIntoString:self.text];
+            
+            newText = mergeResult[kTOMSDictionaryKeyMergedString];
+            self.additionRanges = mergeResult[kTOMSDictionaryKeyAdditionRanges];
+            self.deletionRanges = mergeResult[kTOMSDictionaryKeyDeletionRanges];
+        } else {
+            newText = self.nextText;
+            self.additionRanges = @[[NSValue valueWithRange:NSMakeRange(0, newText.length)]];
+            self.deletionRanges = @[];
+        }
+        
+        self.targetText = self.nextText;
+        self.nextText = nil;
+        return newText;
+    }
+    return @"";
+}
+
+- (void)applyAttributionStage:(NSInteger)stage toString:(NSString *)aString
+{
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:aString];
+    NSInteger middleOfString = (NSInteger)(aString.length / 2);
+    
+    CGFloat(^entryPointForLocation)(NSInteger location) = ^(NSInteger location){
+        if (location >= middleOfString) {
+            return (CGFloat)(location - middleOfString) / (CGFloat)middleOfString;
+        } else {
+            return 1.f - (CGFloat)location / (CGFloat)middleOfString;
+        }
+    };
+    
+    void(^applyMutations)(NSArray *ranges, NSInteger offset) = ^(NSArray *ranges, NSInteger offset){
+        for (NSValue *value in ranges) {
+            NSRange range = [value rangeValue];
+            CGFloat entryPoint = entryPointForLocation(range.location) * self.characterAnimationOffset * (CGFloat)self.numberOfAttributionStages;
+            
+            NSInteger attributionIndex = (NSInteger)(offset - entryPoint);
+            attributionIndex = MIN(self.numberOfAttributionStages - 1, MAX(0, attributionIndex));
+            
+            NSMutableDictionary *attributionStage = self.attributionStages[attributionIndex];
+            CGFloat kernFactor = [attributionStage[kTOMSKernFactorAttributeName] floatValue];
+            NSString *character = [aString substringWithRange:range];
+            CGSize characterSize = [character sizeWithAttributes:@{NSFontAttributeName: attributionStage[NSFontAttributeName]}];
+            attributionStage[NSKernAttributeName] = [NSNumber numberWithFloat:(-kernFactor * characterSize.width)];
+            
+            
+            [attributedText setAttributes:attributionStage
+                                    range:range];
+        }
+    };
+    
+    applyMutations(self.additionRanges, stage * (1 + self.characterAnimationOffset));
+    applyMutations(self.deletionRanges, self.numberOfAttributionStages - stage);
+    
+    self.attributedText = attributedText;
+}
+
+- (void)beginMorphing
+{
+    @synchronized (self) {
+        if (!self.isAnimating) {
+            NSString *newText = [self prepareMorphing];
+            self.animating = YES;
+            _attributionStage = 0;
+            [self applyAttributionStage:self.attributionStage toString:newText];
+        }
+    }
+}
+
+- (void)endMorphing
+{
+    self.animating = NO;
+}
+
+- (void)tickMorphing
+{
 }
 
 @end
