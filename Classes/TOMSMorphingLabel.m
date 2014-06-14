@@ -22,6 +22,8 @@
 @property (atomic, strong) NSString *nextText;
 @property (atomic, strong) NSString *targetText;
 
+@property (nonatomic, strong) CADisplayLink *displayLink;
+
 @end
 
 @implementation TOMSMorphingLabel
@@ -67,26 +69,29 @@
 
 - (void)designatedInitialization
 {
-    self.animationDuration = 0.37;
-    self.characterAnimationOffset = 0.25;
-    self.characterShrinkFactor = 4;
-    self.fps = 60;
+    self.animating = NO;
+    
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self
+                                                   selector:@selector(tickMorphing)];
+    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                           forMode:NSRunLoopCommonModes];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.animationDuration = 0.37;
+            self.characterAnimationOffset = 0.25;
+            self.characterShrinkFactor = 4;
+            self.displayLink.paused = YES;
+        });
+    });
 }
 
 #pragma mark - Setters
 
 - (void)numberOfAttributionStagesShouldChange
 {
-    _numberOfAttributionStages = (NSInteger) (_fps * _animationDuration);
+    _numberOfAttributionStages = (NSInteger) ((1.f / self.displayLink.duration) * _animationDuration);
     _attributionStages = nil;
-}
-
-- (void)setFps:(NSUInteger)fps
-{
-    if (!self.isAnimating) {
-        _fps = fps;
-        [self numberOfAttributionStagesShouldChange];
-    }
 }
 
 - (void)setAnimationDuration:(CGFloat)animationDuration
@@ -101,10 +106,10 @@
 
 - (CGFloat)easedValue:(CGFloat)p
 {
-    if (p < 0.5) {
-        return 2 * p * p;
+    if (p < 0.5f) {
+        return 2.f * p * p;
     }
-    return (-2 * p * p) + (4 * p) - 1;
+    return (-2.f * p * p) + (4.f * p) - 1.f;
 }
 
 - (UIColor *)textColorWithAlpha:(CGFloat)alpha
@@ -132,7 +137,7 @@
         for (int i = 0; i < self.numberOfAttributionStages; i++) {
             NSMutableDictionary *attributionStage = [[NSMutableDictionary alloc] init];
             
-            progress = [self easedValue:(i / (self.numberOfAttributionStages - 1))];
+            progress = [self easedValue:((CGFloat)i / (CGFloat)(self.numberOfAttributionStages - 1))];
             color = [self textColorWithAlpha:progress];
             attributionStage[NSForegroundColorAttributeName] = color;
             
@@ -196,8 +201,12 @@
 
 - (void)setText:(NSString *)text
 {
-    self.nextText = text;
-    [self beginMorphing];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.nextText = text;
+            [self beginMorphing];
+        });
+    });
 }
 
 - (void)setAttributionStage:(NSInteger)attributionStage
@@ -275,7 +284,6 @@
             CGSize characterSize = [character sizeWithAttributes:@{NSFontAttributeName: attributionStage[NSFontAttributeName]}];
             attributionStage[NSKernAttributeName] = [NSNumber numberWithFloat:(-kernFactor * characterSize.width)];
             
-            
             [attributedText setAttributes:attributionStage
                                     range:range];
         }
@@ -295,17 +303,39 @@
             self.animating = YES;
             _attributionStage = 0;
             [self applyAttributionStage:self.attributionStage toString:newText];
+            self.displayLink.paused = NO;
         }
     }
 }
 
 - (void)endMorphing
 {
-    self.animating = NO;
+    self.displayLink.paused = YES;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @synchronized (self) {
+                self.attributedText = [[NSAttributedString alloc] initWithString:self.targetText];
+                self.animating = NO;
+                if (self.nextText) {
+                    [self beginMorphing];
+                }
+            }
+        });
+    });
 }
 
 - (void)tickMorphing
 {
+    @synchronized (self) {
+        if (self.isAnimating) {
+            if (self.attributionStage < self.numberOfAttributionStages) {
+                [self applyAttributionStage:self.attributionStage++ toString:self.text];
+            } else {
+                [self endMorphing];
+            }
+        }
+    }
 }
 
 @end

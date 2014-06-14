@@ -14,6 +14,5 @@
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, assign) CGFloat characterAnimationOffset;
 @property (nonatomic, assign) CGFloat characterShrinkFactor;
-@property (nonatomic, assign) NSUInteger fps;
 
 @end
