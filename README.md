@@ -1,5 +1,5 @@
 # TOMSMorphingLabel
-TOMSMorphingLabel provides configurable morphing transitions between text values of a label.
+Configurable morphing transitions between text values of a label.
 Triggering the animation is as easy as setting the labels `text` property.
 
 ## Demo
@@ -37,29 +37,22 @@ Note that the label will execute only one morph transition at a time. If the tex
 
 ## Customization
 
-TOMSMorphingLabel's designated initializer provides the possibility to configure the morphing transitions look and feel.
-The designated initializer is defined as follows:
+TOMSMorphingLabel provides the possibility to configure the morphing transitions look and feel.
+The configureable properties are defined as follows:
 
-```objective-c
-init(frame: CGRect, animationDuration: Double, characterAnimationOffset: Double = 0.25, characterShrinkFactor: Double = 4, fps: Int = 60)
-```
 <table>
-  <caption>Customizable parameters</caption>
+  <caption>configureable properties</caption>
   <tr>
-    <td><tt>`animationDuration` = 0.36</tt></td>
-    <td>Time that elapses between the setting of a new text value and the end of the morphing transition. </td>
+    <td><tt>animationDuration: CGFloat</tt></td>
+    <td>Time that elapses between the setting of a new text value and the end of the morphing transition. Default: 0.37</td>
   </tr>
   <tr>
-    <td><tt>`characterAnimationOffset` = 0.25</tt></td>
-    <td>Spatial propagation speed of the character shrink and alpha effekt.</td>
+    <td><tt>characterAnimationOffset: CGFloat</tt></td>
+    <td>Spatial propagation speed of the character shrink and alpha effect.. Default: 0.25</td>
   </tr>
   <tr>
-    <td><tt>`characterShrinkFactor` = 4</tt></td>
-    <td>Factor that the scale of a completely disappeared character is divided by.</td>
-  </tr>
-  <tr>
-    <td><tt>`fps` = 60</tt></td>
-    <td>Frames per second. Number of executions of the animations stages within a second.</td>
+    <td><tt>characterShrinkFactor: CGFloat</tt></td>
+    <td>Factor that the scale of a completely disappeared character is divided by. Default: 4</td>
   </tr>
 </table>
 
