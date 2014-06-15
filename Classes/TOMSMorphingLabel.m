@@ -23,6 +23,7 @@
 @property (atomic, strong) NSString *targetText;
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
+@property (nonatomic, assign) CFTimeInterval displayLinkDuration;
 
 @end
 
@@ -69,29 +70,36 @@
 
 - (void)designatedInitialization
 {
+    _displayLinkDuration = -1;
     self.animating = NO;
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
-                                                   selector:@selector(tickMorphing)];
+                                                   selector:@selector(tickInitial)];
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
                            forMode:NSRunLoopCommonModes];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.animationDuration = 0.37;
-            self.characterAnimationOffset = 0.25;
-            self.characterShrinkFactor = 4;
-            self.displayLink.paused = YES;
-        });
-    });
+    self.animationDuration = 0.37;
+    self.characterAnimationOffset = 0.25;
+    self.characterShrinkFactor = 4;
 }
 
 #pragma mark - Setters
 
 - (void)numberOfAttributionStagesShouldChange
 {
-    _numberOfAttributionStages = (NSInteger) ((1.f / self.displayLink.duration) * _animationDuration);
-    _attributionStages = nil;
+    if (self.displayLinkDuration > 0) {
+        _numberOfAttributionStages = (NSInteger) ((1.f / self.displayLinkDuration) * _animationDuration);
+        _attributionStages = nil;
+        if (self.nextText) {
+            [self beginMorphing];
+        }
+    }
+}
+
+- (void)setDisplayLinkDuration:(CFTimeInterval)displayLinkDuration
+{
+    _displayLinkDuration = displayLinkDuration;
+    [self numberOfAttributionStagesShouldChange];
 }
 
 - (void)setAnimationDuration:(CGFloat)animationDuration
@@ -99,6 +107,22 @@
     if (!self.isAnimating) {
         _animationDuration = animationDuration;
         [self numberOfAttributionStagesShouldChange];
+    }
+}
+
+- (void)tickInitial
+{
+    if (self.displayLinkDuration <= 0) {
+        self.displayLink.paused = YES;
+        CFTimeInterval duration = self.displayLink.duration;
+        
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self
+                                                           selector:@selector(tickMorphing)];
+        [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                               forMode:NSRunLoopCommonModes];
+        self.displayLink.paused = YES;
+        
+        self.displayLinkDuration = duration;
     }
 }
 
@@ -201,12 +225,10 @@
 
 - (void)setText:(NSString *)text
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.nextText = text;
-            [self beginMorphing];
-        });
-    });
+    self.nextText = text;
+    if (self.displayLinkDuration > 0) {
+        [self beginMorphing];
+    }
 }
 
 - (void)setAttributionStage:(NSInteger)attributionStage
