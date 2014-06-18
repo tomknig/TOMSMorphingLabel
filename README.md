@@ -23,8 +23,8 @@ pod "TOMSMorphingLabel", "~> 0.1.0"
 Instantiate TOMSMorphingLabel as you would do with an UILabel results in a fully working thus morphing label.
 
 ```objective-c
-var label = TOMSMorphingLabel(frame: CGRect(x: 0, y: 42, width: self.view.frame.size.width, height: 42))
-self.view.addSubview(label)
+TOMSMorphingLabel *label = [[TOMSMorphingLabel alloc] initWithFrame:CGRectMake(0, 42, self.view.frame.size.width, 42)];
+[self.view addSubview:label];
 ```
 
 Setting - and particularly changing - the labels text property will automatically morph the labels previous text to the new value.
