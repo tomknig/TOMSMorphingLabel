@@ -25,14 +25,14 @@
     NSMutableArray *additionRanges = [[NSMutableArray alloc] init];
     NSMutableArray *deletionRanges = [[NSMutableArray alloc] init];
     
-    __block int startLocation, endLocation;
-    __block int ownIdx = 0, numberOfInsertions = 0;
+    __block NSInteger startLocation, endLocation;
+    __block NSInteger ownIdx = 0, numberOfInsertions = 0;
     
-    [self toms_enumerateCharacters:^(BOOL *stopOwnEnumeration, const unichar ownChar, NSUInteger index){
+    [self toms_enumerateCharacters:^(BOOL *stopOwnEnumeration, const unichar ownChar, NSInteger index){
         startLocation = -1;
         endLocation = -1;
         
-        [string toms_enumerateCharacters:^(BOOL *stopAlienEnumeration, const unichar alienChar, NSUInteger alienIdx){
+        [string toms_enumerateCharacters:^(BOOL *stopAlienEnumeration, const unichar alienChar, NSInteger alienIdx){
             if (ownIdx <= alienIdx++) {
                 if (startLocation < 0) {
                     startLocation = ownIdx;
@@ -82,13 +82,13 @@
 }
 
 
--(void)toms_enumerateCharacters:(void(^)(BOOL *stop, const unichar aChar, NSUInteger index))enumerationBlock
+-(void)toms_enumerateCharacters:(void(^)(BOOL *stop, const unichar aChar, NSInteger index))enumerationBlock
 {
     const unichar *chars = CFStringGetCharactersPtr((__bridge CFStringRef)self);
     BOOL stop = NO;
     
     if (chars != NULL) {
-        NSUInteger index = 0;
+        NSInteger index = 0;
         while (*chars && !stop) {
             enumerationBlock(&stop, *chars, index);
             chars++;
@@ -96,8 +96,8 @@
         }
     } else {
         SEL sel = @selector(characterAtIndex:);
-        unichar (*charAtIndex)(id, SEL, NSUInteger) = (typeof(charAtIndex)) [self methodForSelector:sel];
-        for (NSUInteger i = 0; i < self.length; i++) {
+        unichar (*charAtIndex)(id, SEL, NSInteger) = (typeof(charAtIndex)) [self methodForSelector:sel];
+        for (NSInteger i = 0; i < self.length; i++) {
             const unichar c = charAtIndex(self, sel, i);
             enumerationBlock(&stop, c, i);
             if (stop) {
