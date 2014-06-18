@@ -20,7 +20,7 @@
 @property (atomic, strong) NSArray *deletionRanges;
 @property (atomic, strong) NSArray *additionRanges;
 @property (atomic, strong) NSString *nextText;
-@property (atomic, strong) NSString *targetText;
+@property (readwrite, atomic, strong) NSString *targetText;
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @property (nonatomic, assign) CFTimeInterval displayLinkDuration;

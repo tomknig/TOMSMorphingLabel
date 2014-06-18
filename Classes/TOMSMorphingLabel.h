@@ -11,6 +11,7 @@
 
 @interface TOMSMorphingLabel : UILabel
 
+@property (readonly, atomic, strong) NSString *targetText;
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, assign) CGFloat characterAnimationOffset;
 @property (nonatomic, assign) CGFloat characterShrinkFactor;
