@@ -308,4 +308,86 @@
     [self assertMergeOfString:newString intoString:oldString expectedResult:expectedResult];
 }
 
+- (void)test_unicode_prefix
+{
+    NSMutableDictionary *expectedResult = [[NSMutableDictionary alloc] init];
+    NSMutableArray *additionRanges = [[NSMutableArray alloc] init];
+    NSMutableArray *deletionRanges = [[NSMutableArray alloc] init];
+    
+    NSString *mergeString = @"开源";
+    NSString *newString = @"开源";
+    NSString *oldString = @"开";
+    
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(1, 1)]];
+    
+    expectedResult[kTOMSDictionaryKeyMergedString] = mergeString;
+    expectedResult[kTOMSDictionaryKeyAdditionRanges] = additionRanges;
+    expectedResult[kTOMSDictionaryKeyDeletionRanges] = deletionRanges;
+    
+    [self assertMergeOfString:newString intoString:oldString expectedResult:expectedResult];
+}
+
+- (void)test_unicode_suffix
+{
+    NSMutableDictionary *expectedResult = [[NSMutableDictionary alloc] init];
+    NSMutableArray *additionRanges = [[NSMutableArray alloc] init];
+    NSMutableArray *deletionRanges = [[NSMutableArray alloc] init];
+    
+    NSString *mergeString = @"开源";
+    NSString *newString = @"开";
+    NSString *oldString = @"开源";
+    
+    [deletionRanges addObject:[NSValue valueWithRange:NSMakeRange(1, 1)]];
+    
+    expectedResult[kTOMSDictionaryKeyMergedString] = mergeString;
+    expectedResult[kTOMSDictionaryKeyAdditionRanges] = additionRanges;
+    expectedResult[kTOMSDictionaryKeyDeletionRanges] = deletionRanges;
+    
+    [self assertMergeOfString:newString intoString:oldString expectedResult:expectedResult];
+}
+
+- (void)test_unicode_superset
+{
+    NSMutableDictionary *expectedResult = [[NSMutableDictionary alloc] init];
+    NSMutableArray *additionRanges = [[NSMutableArray alloc] init];
+    NSMutableArray *deletionRanges = [[NSMutableArray alloc] init];
+    
+    NSString *mergeString = @"1⃣2⃣3⃣";
+    NSString *newString = @"1⃣2⃣3⃣";
+    NSString *oldString = @"2⃣";
+    
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(0, 1)]];
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(2, 1)]];
+    
+    expectedResult[kTOMSDictionaryKeyMergedString] = mergeString;
+    expectedResult[kTOMSDictionaryKeyAdditionRanges] = additionRanges;
+    expectedResult[kTOMSDictionaryKeyDeletionRanges] = deletionRanges;
+    
+    [self assertMergeOfString:newString intoString:oldString expectedResult:expectedResult];
+}
+
+- (void)test_unicode_fuzzy_merge
+{
+    NSMutableDictionary *expectedResult = [[NSMutableDictionary alloc] init];
+    NSMutableArray *additionRanges = [[NSMutableArray alloc] init];
+    NSMutableArray *deletionRanges = [[NSMutableArray alloc] init];
+    
+    NSString *mergeString = @"1⃣2⃣3⃣4⃣5⃣";
+    NSString *newString = @"1⃣3⃣4⃣";
+    NSString *oldString = @"2⃣3⃣5⃣";
+    
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(0, 1)]];
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(3, 1)]];
+    
+    [deletionRanges addObject:[NSValue valueWithRange:NSMakeRange(1, 1)]];
+    [deletionRanges addObject:[NSValue valueWithRange:NSMakeRange(4, 1)]];
+    
+    expectedResult[kTOMSDictionaryKeyMergedString] = mergeString;
+    expectedResult[kTOMSDictionaryKeyAdditionRanges] = additionRanges;
+    expectedResult[kTOMSDictionaryKeyDeletionRanges] = deletionRanges;
+    
+    [self assertMergeOfString:newString intoString:oldString expectedResult:expectedResult];
+}
+
+
 @end

@@ -38,6 +38,10 @@
 {
     if (!_textValues) {
         _textValues = @[
+                        @"开",
+                        @"开源",
+                        @"2⃣3⃣4⃣",
+                        @"1⃣2⃣3⃣4⃣5⃣",
                         @"Swift",
                         @"Swiftilicious",
                         @"delicious"
