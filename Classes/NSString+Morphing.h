@@ -14,6 +14,8 @@
 
 @interface NSString (Morphing)
 
+- (NSUInteger)toms_unicodeLength;
+
 - (NSDictionary *)toms_mergeIntoString:(NSString *)string;
 
 - (NSDictionary *)toms_mergeIntoString:(NSString *)string lookAheadRadius:(NSUInteger)lookAheadRadius;
