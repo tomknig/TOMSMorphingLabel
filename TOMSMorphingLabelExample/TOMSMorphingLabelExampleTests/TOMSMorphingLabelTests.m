@@ -356,8 +356,8 @@
     NSString *newString = @"1⃣2⃣3⃣";
     NSString *oldString = @"2⃣";
     
-    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(0, 1)]];
-    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(2, 1)]];
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(0, 2)]];
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(4, 2)]];
     
     expectedResult[kTOMSDictionaryKeyMergedString] = mergeString;
     expectedResult[kTOMSDictionaryKeyAdditionRanges] = additionRanges;
@@ -376,11 +376,11 @@
     NSString *newString = @"1⃣3⃣4⃣";
     NSString *oldString = @"2⃣3⃣5⃣";
     
-    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(0, 1)]];
-    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(3, 1)]];
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(0, 2)]];
+    [additionRanges addObject:[NSValue valueWithRange:NSMakeRange(6, 2)]];
     
-    [deletionRanges addObject:[NSValue valueWithRange:NSMakeRange(1, 1)]];
-    [deletionRanges addObject:[NSValue valueWithRange:NSMakeRange(4, 1)]];
+    [deletionRanges addObject:[NSValue valueWithRange:NSMakeRange(2, 2)]];
+    [deletionRanges addObject:[NSValue valueWithRange:NSMakeRange(8, 2)]];
     
     expectedResult[kTOMSDictionaryKeyMergedString] = mergeString;
     expectedResult[kTOMSDictionaryKeyAdditionRanges] = additionRanges;
@@ -388,6 +388,5 @@
     
     [self assertMergeOfString:newString intoString:oldString expectedResult:expectedResult];
 }
-
 
 @end
