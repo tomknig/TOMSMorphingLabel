@@ -38,13 +38,14 @@
 {
     if (!_textValues) {
         _textValues = @[
+                        @"Swift",
+                        @"Swiftilicious",
+                        @"delicious",
                         @"开",
                         @"开源",
                         @"2⃣3⃣4⃣",
                         @"1⃣2⃣3⃣4⃣5⃣",
-                        @"Swift",
-                        @"Swiftilicious",
-                        @"delicious"
+                        @""
                         ];
     }
     return _textValues;
