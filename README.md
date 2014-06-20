@@ -15,7 +15,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 platform :ios, '7.0'
-pod "TOMSMorphingLabel", "~> 0.1.0"
+pod "TOMSMorphingLabel", "~> 0.2.0"
 ```
 
 ## Usage
@@ -56,6 +56,13 @@ The configureable properties are defined as follows:
   </tr>
 </table>
 
+## Changelog
+
+#### 0.2.0
+* added unicode support
+
+#### 0.1.0
+* initial version
 
 ## Author
 
