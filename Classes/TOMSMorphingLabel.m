@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 TomKnig. All rights reserved.
 //
 
+#import <CoreText/CoreText.h>
+
 #import "TOMSMorphingLabel.h"
 
 #define kTOMSKernFactorAttributeName @"kTOMSKernFactorAttributeName"
@@ -303,7 +305,34 @@
             NSMutableDictionary *attributionStage = self.attributionStages[attributionIndex];
             CGFloat kernFactor = [attributionStage[kTOMSKernFactorAttributeName] floatValue];
             NSString *character = [aString substringWithRange:range];
-            CGSize characterSize = [character sizeWithAttributes:@{NSFontAttributeName: attributionStage[NSFontAttributeName]}];
+            CGSize characterSize = CGSizeZero;
+
+            if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+#ifdef PRECISE_FONT_METRICS
+    #define CFAutomatedReferenceCount(CFAnyTypeRef, typeRef, CFCreateOrCopyFunction) CFAnyTypeRef typeRef = ((__bridge CFAnyTypeRef)CFBridgingRelease(CFCreateOrCopyFunction))
+                @autoreleasepool {
+                    UIFont *font = attributionStage[NSFontAttributeName];
+                    CFAutomatedReferenceCount(CTFontRef, fontRef, CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL));
+                    CFAutomatedReferenceCount(CFAttributedStringRef, attributed, CFAttributedStringCreate(NULL, (__bridge CFStringRef)character, (__bridge CFDictionaryRef)@{(id)kCTFontAttributeName : (__bridge id)fontRef}));
+                    CFAutomatedReferenceCount(CTFramesetterRef, framesetter, CTFramesetterCreateWithAttributedString(attributed));
+                    CFAutomatedReferenceCount(CGPathRef, path, CGPathCreateWithRect(CGRectInfinite, NULL));
+                    CFAutomatedReferenceCount(CTFrameRef, frame, CTFramesetterCreateFrame(framesetter, CFRangeMake(0, CFAttributedStringGetLength(attributed)), path, NULL));
+                    NSArray *lines = (id)CTFrameGetLines(frame);
+                    characterSize = CTLineGetBoundsWithOptions((__bridge CTLineRef)[lines firstObject], 0).size;
+                }
+    #undef CFAutomatedReferenceCount
+#else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                /* Quick and dirty font metrics */
+                characterSize = [character sizeWithFont:attributionStage[NSFontAttributeName]];
+#pragma clang diagnostic pop
+#endif
+            }
+            else {
+                characterSize = [character sizeWithAttributes:@{NSFontAttributeName: attributionStage[NSFontAttributeName]}];
+            }
+
             attributionStage[NSKernAttributeName] = [NSNumber numberWithFloat:(-kernFactor * characterSize.width)];
             
             [attributedText setAttributes:attributionStage
