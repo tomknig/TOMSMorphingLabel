@@ -321,8 +321,12 @@
                     characterSize = CTLineGetBoundsWithOptions((__bridge CTLineRef)[lines firstObject], 0).size;
                 }
     #undef CFAutomatedReferenceCount
-#else /* Quick and dirty font metrics */
+#else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                /* Quick and dirty font metrics */
                 characterSize = [character sizeWithFont:attributionStage[NSFontAttributeName]];
+#pragma clang diagnostic pop
 #endif
             }
             else {
