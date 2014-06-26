@@ -15,7 +15,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 platform :ios, '7.0'
-pod "TOMSMorphingLabel", "~> 0.2.0"
+pod "TOMSMorphingLabel", "~> 0.2.1"
 ```
 
 ## Usage
@@ -58,11 +58,21 @@ The configureable properties are defined as follows:
 
 ## Changelog
 
+#### 0.2.1
+* added support for iOS6
+
 #### 0.2.0
 * added unicode support
 
 #### 0.1.0
 * initial version
+
+## Contribution & Contributors
+
+I'd love to see your ideas for improving this library!
+The best way to contribute is by submitting a pull request or a [new Github issue](https://github.com/TomKnig/TOMSMorphingLabel/issues/new). :octocat:
+
+* @andrebraga added support for iOS6 in version 0.2.1
 
 ## Author
 
