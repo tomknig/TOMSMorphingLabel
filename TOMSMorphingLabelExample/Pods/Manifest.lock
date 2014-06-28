@@ -1,14 +1,14 @@
 PODS:
-  - TOMSMorphingLabel (0.1.0)
+  - TOMSMorphingLabel (0.2.1)
 
 DEPENDENCIES:
-  - TOMSMorphingLabel (from `../`)
+  - TOMSMorphingLabel (from `../TOMSMorphingLabel.podspec`)
 
 EXTERNAL SOURCES:
   TOMSMorphingLabel:
-    :path: ../
+    :path: ../TOMSMorphingLabel.podspec
 
 SPEC CHECKSUMS:
-  TOMSMorphingLabel: aab1b4efa08f189f6c89dcb39a1a5ba1c98a784e
+  TOMSMorphingLabel: fab055c4dc7bb46aa585c66229fe8b2d63d01388
 
 COCOAPODS: 0.33.1
