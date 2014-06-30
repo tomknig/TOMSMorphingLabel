@@ -72,13 +72,14 @@
 
 - (void)designatedInitialization
 {
+    self.runLoopCommonMode = NSRunLoopCommonModes;
     _displayLinkDuration = -1;
     self.animating = NO;
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
                                                    selector:@selector(tickInitial)];
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
-                           forMode:NSRunLoopCommonModes];
+                           forMode:self.runLoopCommonMode];
     
     self.animationDuration = 0.37;
     self.characterAnimationOffset = 0.25;
@@ -86,6 +87,15 @@
 }
 
 #pragma mark - Setters
+
+- (void)setRunLoopCommonMode:(NSString *)runLoopCommonMode
+{
+    _runLoopCommonMode = runLoopCommonMode;
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self
+                                                   selector:@selector(tickInitial)];
+    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                           forMode:self.runLoopCommonMode];
+}
 
 - (void)numberOfAttributionStagesShouldChange
 {
@@ -121,7 +131,7 @@
         self.displayLink = [CADisplayLink displayLinkWithTarget:self
                                                            selector:@selector(tickMorphing)];
         [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
-                               forMode:NSRunLoopCommonModes];
+                               forMode:self.runLoopCommonMode];
         self.displayLink.paused = YES;
         
         self.displayLinkDuration = duration;
