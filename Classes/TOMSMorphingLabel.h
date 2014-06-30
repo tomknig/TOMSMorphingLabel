@@ -15,5 +15,9 @@
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, assign) CGFloat characterAnimationOffset;
 @property (nonatomic, assign) CGFloat characterShrinkFactor;
+/**
+ *  Default is NSRunLoopCommonModes
+ */
+@property (nonatomic, copy) NSString *runLoopCommonMode;
 
 @end
