@@ -88,6 +88,15 @@
 
 #pragma mark - Setters
 
+- (void)setRunLoopCommonMode:(NSString *)runLoopCommonMode
+{
+    _runLoopCommonMode = runLoopCommonMode;
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self
+                                                   selector:@selector(tickInitial)];
+    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                           forMode:self.runLoopCommonMode];
+}
+
 - (void)numberOfAttributionStagesShouldChange
 {
     if (self.displayLinkDuration > 0) {
