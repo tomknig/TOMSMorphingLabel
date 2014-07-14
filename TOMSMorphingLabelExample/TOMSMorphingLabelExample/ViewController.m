@@ -10,7 +10,6 @@
 #import <TOMSMorphingLabel/TOMSMorphingLabel.h>
 
 @interface ViewController ()
-@property (atomic, assign) BOOL isAnimating;
 @property (nonatomic, assign) NSInteger idx;
 @property (nonatomic, strong) NSArray *textValues;
 @end
@@ -21,7 +20,6 @@
     [super viewDidLoad];
     
     self.idx = 0;
-    self.isAnimating = YES;
     
     CGRect frame = CGRectMake(0, 42, self.view.frame.size.width, 42);
     TOMSMorphingLabel *label = [[TOMSMorphingLabel alloc] initWithFrame:frame];
@@ -58,20 +56,12 @@
     _idx = MAX(0, MIN(idx, idx % [self.textValues count]));
 }
 
-- (void)toggleTextForLabel:(TOMSMorphingLabel *)label
+- (void)toggleTextForLabel:(UILabel *)label
 {
-    [label setText:self.textValues[self.idx++] animated:self.isAnimating];
+    label.text = self.textValues[self.idx++];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self toggleTextForLabel:label];
     });
-}
-
-#pragma mark - toggling animating
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // User tapped view
-    self.isAnimating = !self.isAnimating;
 }
 
 @end
