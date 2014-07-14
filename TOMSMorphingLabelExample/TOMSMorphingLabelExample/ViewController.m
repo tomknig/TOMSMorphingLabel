@@ -12,6 +12,7 @@
 @interface ViewController ()
 @property (nonatomic, assign) NSInteger idx;
 @property (nonatomic, strong) NSArray *textValues;
+@property (nonatomic, strong) TOMSMorphingLabel *label;
 @end
 
 @implementation ViewController
@@ -22,14 +23,14 @@
     self.idx = 0;
     
     CGRect frame = CGRectMake(0, 42, self.view.frame.size.width, 42);
-    TOMSMorphingLabel *label = [[TOMSMorphingLabel alloc] initWithFrame:frame];
+    self.label = [[TOMSMorphingLabel alloc] initWithFrame:frame];
     
-    label.font = [UIFont systemFontOfSize:32];
-    label.textColor = [UIColor colorWithRed:0.102 green:0.839 blue:0.992 alpha: 1];
-    label.textAlignment = NSTextAlignmentCenter;
+    self.label.font = [UIFont systemFontOfSize:32];
+    self.label.textColor = [UIColor colorWithRed:0.102 green:0.839 blue:0.992 alpha: 1];
+    self.label.textAlignment = NSTextAlignmentCenter;
     
-    [self.view addSubview:label];
-    [self toggleTextForLabel:label];
+    [self.view addSubview:self.label];
+    [self toggleTextForLabel:self.label];
 }
 
 #pragma mark - toggling text
@@ -62,6 +63,14 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self toggleTextForLabel:label];
     });
+}
+
+#pragma mark - toggling animating
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // User tapped view
+    self.label.shouldAnimate = !self.label.shouldAnimate;
 }
 
 @end

@@ -16,7 +16,6 @@
 
 @property (readonly, nonatomic, assign) NSUInteger numberOfAttributionStages;
 @property (readonly, nonatomic, strong) NSArray *attributionStages;
-@property (atomic, assign, getter=isAnimating) BOOL animating;
 
 @property (atomic, assign) NSInteger attributionStage;
 @property (atomic, strong) NSArray *deletionRanges;
@@ -74,6 +73,7 @@
 {
     _displayLinkDuration = -1;
     self.animating = NO;
+    self.shouldAnimate = YES;
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
                                                    selector:@selector(tickInitial)];
@@ -228,6 +228,14 @@
 - (void)setText:(NSString *)text
 {
     self.nextText = text;
+    
+    if (!self.shouldAnimate)
+    {
+         NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+        self.attributedText = attributedText;
+        return;
+    }
+    
     if (self.displayLinkDuration > 0) {
         [self beginMorphing];
     }

@@ -16,4 +16,7 @@
 @property (nonatomic, assign) CGFloat characterAnimationOffset;
 @property (nonatomic, assign) CGFloat characterShrinkFactor;
 
+@property (atomic, assign, getter=isAnimating) BOOL animating;
+@property (atomic, assign, getter =shouldAnimate) BOOL shouldAnimate;
+
 @end
