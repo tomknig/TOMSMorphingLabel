@@ -73,6 +73,7 @@
 - (void)designatedInitialization
 {
     _displayLinkDuration = -1;
+    _isMorphingEnabled = YES;
     self.animating = NO;
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
@@ -96,6 +97,14 @@
             [self beginMorphing];
         }
     }
+}
+
+- (void)setTextWithoutMorphing:(NSString *)text
+{
+    BOOL wasMorphingEnabled = self.isMorphingEnabled;
+    self.isMorphingEnabled = NO;
+    self.text = text;
+    self.isMorphingEnabled = wasMorphingEnabled;
 }
 
 - (void)setDisplayLinkDuration:(CFTimeInterval)displayLinkDuration
@@ -227,9 +236,13 @@
 
 - (void)setText:(NSString *)text
 {
-    self.nextText = text;
-    if (self.displayLinkDuration > 0) {
-        [self beginMorphing];
+    if (self.isMorphingEnabled) {
+        self.nextText = text;
+        if (self.displayLinkDuration > 0) {
+            [self beginMorphing];
+        }
+    } else {
+        [super setText:text];
     }
 }
 
