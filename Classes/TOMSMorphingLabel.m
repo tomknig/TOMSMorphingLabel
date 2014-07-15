@@ -73,7 +73,7 @@
 - (void)designatedInitialization
 {
     _displayLinkDuration = -1;
-    _isMorphingEnabled = YES;
+    _morphingEnabled = YES;
     self.animating = NO;
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
@@ -102,9 +102,9 @@
 - (void)setTextWithoutMorphing:(NSString *)text
 {
     BOOL wasMorphingEnabled = self.isMorphingEnabled;
-    self.isMorphingEnabled = NO;
+    self.morphingEnabled = NO;
     self.text = text;
-    self.isMorphingEnabled = wasMorphingEnabled;
+    self.morphingEnabled = wasMorphingEnabled;
 }
 
 - (void)setDisplayLinkDuration:(CFTimeInterval)displayLinkDuration
