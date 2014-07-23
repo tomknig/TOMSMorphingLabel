@@ -291,18 +291,7 @@
         self.nextText = nil;
         return newText;
     }
-	else
-	{
-		self.additionRanges = @[];
-		self.deletionRanges = @[];
-		if (self.text)
-		{
-			self.deletionRanges = @[[NSValue valueWithRange:NSMakeRange(0, self.text.length)]];
-		}
-		self.targetText = nil;
-		self.nextText = nil;
-		return @"";
-	}
+	return @"";
 }
 
 - (void)applyAttributionStage:(NSInteger)stage toString:(NSString *)aString
