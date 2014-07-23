@@ -15,7 +15,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 platform :ios, '7.0'
-pod "TOMSMorphingLabel", "~> 0.2.1"
+pod "TOMSMorphingLabel", "~> 0.2.2"
 ```
 
 ## Usage
@@ -48,15 +48,22 @@ The configureable properties are defined as follows:
   </tr>
   <tr>
     <td><tt>characterAnimationOffset: CGFloat</tt></td>
-    <td>Spatial propagation speed of the character shrink and alpha effect.. Default: 0.25</td>
+    <td>Spatial propagation speed of the character shrink and alpha effect. Default: 0.25</td>
   </tr>
   <tr>
     <td><tt>characterShrinkFactor: CGFloat</tt></td>
     <td>Factor that the scale of a completely disappeared character is divided by. Default: 4</td>
   </tr>
+  <tr>
+    <td><tt>morphingEnabled: BOOL</tt></td>
+    <td>Defines whether the morphing transition between text values is enabled. Default: YES</td>
+  </tr>
 </table>
 
 ## Changelog
+
+#### 0.2.2
+* added property to disable morphing
 
 #### 0.2.1
 * added support for iOS6
@@ -73,6 +80,7 @@ I'd love to see your ideas for improving this library!
 The best way to contribute is by submitting a pull request or a [new Github issue](https://github.com/TomKnig/TOMSMorphingLabel/issues/new). :octocat:
 
 * @andrebraga added support for iOS6 in version 0.2.1
+* @stepanhruda added property to disable morphing in version 0.2.2
 
 ## Author
 

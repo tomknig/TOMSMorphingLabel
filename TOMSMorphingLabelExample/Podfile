@@ -1,3 +1,3 @@
 platform :ios, '7.0'
 
-pod "TOMSMorphingLabel", :path => "../"
+pod "TOMSMorphingLabel", :path => "../TOMSMorphingLabel.podspec"
