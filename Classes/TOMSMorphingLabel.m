@@ -237,7 +237,7 @@
 - (void)setText:(NSString *)text
 {
     if (self.isMorphingEnabled) {
-        self.nextText = text;
+        self.nextText = text ? : @"";
         if (self.displayLinkDuration > 0) {
             [self beginMorphing];
         }
@@ -291,7 +291,7 @@
         self.nextText = nil;
         return newText;
     }
-    return @"";
+	return @"";
 }
 
 - (void)applyAttributionStage:(NSInteger)stage toString:(NSString *)aString
