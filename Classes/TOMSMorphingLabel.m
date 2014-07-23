@@ -73,6 +73,7 @@
 - (void)designatedInitialization
 {
     _displayLinkDuration = -1;
+    _morphingEnabled = YES;
     self.animating = NO;
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
@@ -96,6 +97,14 @@
             [self beginMorphing];
         }
     }
+}
+
+- (void)setTextWithoutMorphing:(NSString *)text
+{
+    BOOL wasMorphingEnabled = self.isMorphingEnabled;
+    self.morphingEnabled = NO;
+    self.text = text;
+    self.morphingEnabled = wasMorphingEnabled;
 }
 
 - (void)setDisplayLinkDuration:(CFTimeInterval)displayLinkDuration
@@ -227,9 +236,13 @@
 
 - (void)setText:(NSString *)text
 {
-    self.nextText = text;
-    if (self.displayLinkDuration > 0) {
-        [self beginMorphing];
+    if (self.isMorphingEnabled) {
+        self.nextText = text;
+        if (self.displayLinkDuration > 0) {
+            [self beginMorphing];
+        }
+    } else {
+        [super setText:text];
     }
 }
 
@@ -278,7 +291,18 @@
         self.nextText = nil;
         return newText;
     }
-    return @"";
+	else
+	{
+		self.additionRanges = @[];
+		self.deletionRanges = @[];
+		if (self.text)
+		{
+			self.deletionRanges = @[[NSValue valueWithRange:NSMakeRange(0, self.text.length)]];
+		}
+		self.targetText = nil;
+		self.nextText = nil;
+		return @"";
+	}
 }
 
 - (void)applyAttributionStage:(NSInteger)stage toString:(NSString *)aString
