@@ -316,6 +316,7 @@
             attributionIndex = MIN(self.numberOfAttributionStages - 1, MAX(0, attributionIndex));
             
             NSMutableDictionary *attributionStage = self.attributionStages[attributionIndex];
+            attributionStage[NSForegroundColorAttributeName] = self.textColor;
             CGFloat kernFactor = [attributionStage[kTOMSKernFactorAttributeName] floatValue];
             NSString *character = [aString substringWithRange:range];
             CGSize characterSize = CGSizeZero;
