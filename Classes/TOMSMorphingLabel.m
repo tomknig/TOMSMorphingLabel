@@ -237,7 +237,7 @@
 - (void)setText:(NSString *)text
 {
     if (!self.text) {
-        return;
+        self.text = @"";
     }
     
     if (self.isMorphingEnabled) {
