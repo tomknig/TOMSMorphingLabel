@@ -61,10 +61,9 @@ The configureable properties are defined as follows:
 </table>
 
 ## Changelog
-* fixed a bug that caused a crash when setting text to nil in version 0.2.3
 
 #### 0.2.3
-* added property to disable morphing
+* fixed a bug that caused a crash when setting text to nil in version 0.2.3
 
 #### 0.2.2
 * added property to disable morphing
