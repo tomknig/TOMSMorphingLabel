@@ -63,7 +63,7 @@ The configureable properties are defined as follows:
 ## Changelog
 
 #### 0.2.3
-* fixed a bug that caused a crash when setting text to nil in version 0.2.3
+* fixed a bug that caused a crash when setting text to nil
 
 #### 0.2.2
 * added property to disable morphing
