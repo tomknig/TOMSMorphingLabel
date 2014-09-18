@@ -61,6 +61,10 @@ The configureable properties are defined as follows:
 </table>
 
 ## Changelog
+* fixed a bug that caused a crash when setting text to nil in version 0.2.3
+
+#### 0.2.3
+* added property to disable morphing
 
 #### 0.2.2
 * added property to disable morphing
@@ -81,6 +85,7 @@ The best way to contribute is by submitting a pull request or a [new Github issu
 
 * @andrebraga added support for iOS6 in version 0.2.1
 * @stepanhruda added property to disable morphing in version 0.2.2
+* @itouch2 fixed a bug that caused a crash when setting text to nil in version 0.2.3
 
 ## Author
 
