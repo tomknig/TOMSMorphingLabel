@@ -15,7 +15,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 platform :ios, '7.0'
-pod "TOMSMorphingLabel", "~> 0.2.2"
+pod "TOMSMorphingLabel", "~> 0.2.3"
 ```
 
 ## Usage
