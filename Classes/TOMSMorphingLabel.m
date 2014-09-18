@@ -236,17 +236,13 @@
 
 - (void)setText:(NSString *)text
 {
-    if (!self.text) {
-        self.text = @"";
-    }
-    
     if (self.isMorphingEnabled) {
-        self.nextText = text;
+        self.nextText = text ? text : @"";
         if (self.displayLinkDuration > 0) {
             [self beginMorphing];
         }
     } else {
-        [super setText:text];
+        super.text = text;
     }
 }
 
