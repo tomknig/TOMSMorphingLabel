@@ -29,7 +29,11 @@
     label.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:label];
-    [self toggleTextForLabel:label];
+    [label setText:@"Test" withCompletionBlock:^{
+        NSLog(@"First label animation completed");
+    }];
+    
+    [self performSelector:@selector(toggleTextForLabel:) withObject:label afterDelay:2];
 }
 
 #pragma mark - toggling text

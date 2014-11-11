@@ -18,5 +18,6 @@
 @property (nonatomic, assign, getter=isMorphingEnabled) BOOL morphingEnabled;
 
 - (void)setTextWithoutMorphing:(NSString *)text;
+- (void)setText:(NSString*)text withCompletionBlock:(void (^)(void))block;
 
 @end

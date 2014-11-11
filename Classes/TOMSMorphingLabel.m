@@ -12,7 +12,9 @@
 
 #define kTOMSKernFactorAttributeName @"kTOMSKernFactorAttributeName"
 
-@interface TOMSMorphingLabel ()
+@interface TOMSMorphingLabel (){
+    void (^_setTextCompletionBlock)(void);
+}
 
 @property (readonly, nonatomic, assign) NSUInteger numberOfAttributionStages;
 @property (readonly, nonatomic, strong) NSArray *attributionStages;
@@ -251,6 +253,11 @@
 
 - (void)setText:(NSString *)text
 {
+    [self setText:text withCompletionBlock:nil];
+}
+
+- (void)setText:(NSString*) text withCompletionBlock:(void (^)(void))block{
+    _setTextCompletionBlock = block;
     if (self.isMorphingEnabled) {
         self.nextText = text ? text : @"";
         if (self.displayLinkDuration > 0) {
@@ -398,6 +405,12 @@
                 self.animating = NO;
                 if (self.nextText) {
                     [self beginMorphing];
+                }
+                else{
+                    if(_setTextCompletionBlock != nil){
+                        _setTextCompletionBlock();
+                        _setTextCompletionBlock = nil;
+                    }
                 }
             }
         });
