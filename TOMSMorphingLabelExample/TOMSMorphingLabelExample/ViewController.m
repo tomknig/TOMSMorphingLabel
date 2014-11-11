@@ -32,6 +32,7 @@
     [label setText:@"Test" withCompletionBlock:^{
         NSLog(@"First label animation completed");
     }];
+    
     [self performSelector:@selector(toggleTextForLabel:) withObject:label afterDelay:2];
 }
 
