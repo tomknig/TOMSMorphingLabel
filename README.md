@@ -15,7 +15,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 platform :ios, '7.0'
-pod "TOMSMorphingLabel", "~> 0.2.3"
+pod "TOMSMorphingLabel", "~> 0.2.5"
 ```
 
 ## Usage
@@ -31,6 +31,14 @@ Setting - and particularly changing - the labels text property will automaticall
 
 ```objective-c
 label.text = @"Swift";
+```
+
+Setting the labels text property using `setText:withCompletionBlock` will morph the labels as well as triggering the completion block when the animation is finished.
+
+```objective-c
+[label setText:@"Swift" withCompletionBlock:^{
+  NSLog(@"label.text is now 'Swift'");
+}];
 ```
 
 Note that the label will execute only one morph transition at a time. If the text value of the label changes during a transition - even if it changes multiple times - the label will invoke a transition to the youngest text value that was set.
@@ -62,6 +70,10 @@ The configureable properties are defined as follows:
 
 ## Changelog
 
+#### 0.2.5
+* fixed a textColor glitch
+* introduced `setText:withCompletionBlock:`
+
 #### 0.2.3
 * fixed a bug that caused a crash when setting text to nil
 
@@ -85,6 +97,8 @@ The best way to contribute is by submitting a pull request or a [new Github issu
 * @andrebraga added support for iOS6 in version 0.2.1
 * @stepanhruda added property to disable morphing in version 0.2.2
 * @itouch2 fixed a bug that caused a crash when setting text to nil in version 0.2.3
+* @waynehartman fixed text color-change glitch in version 0.2.5  
+* @cyril94440 added `setText:withCompletionBlock:` in version 0.2.5
 
 ## Author
 
