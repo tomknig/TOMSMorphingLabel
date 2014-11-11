@@ -99,6 +99,21 @@
     }
 }
 
+- (void)setTextColor:(UIColor *)textColor
+{
+    [super setTextColor:textColor];
+    
+    @synchronized(self) {
+        for (NSMutableDictionary *attributionStage in self.attributionStages) {
+            if ([attributionStage[NSForegroundColorAttributeName] isKindOfClass:[UIColor class]]) {
+                UIColor *attributionStageColor = attributionStage[NSForegroundColorAttributeName];
+                CGFloat attributionStageAlpha = CGColorGetAlpha(attributionStageColor.CGColor);
+                attributionStage[NSForegroundColorAttributeName] = [self textColorWithAlpha:attributionStageAlpha];
+            }
+        }
+    }
+}
+
 - (void)setTextWithoutMorphing:(NSString *)text
 {
     BOOL wasMorphingEnabled = self.isMorphingEnabled;
