@@ -156,9 +156,9 @@
 
 #pragma mark - Getters
 
-- (BOOL)isMorphingEnabled
+- (BOOL)shouldAnimateSettingText
 {
-    return _morphingEnabled && [UIView areAnimationsEnabled];
+    return self.isMorphingEnabled && [UIView areAnimationsEnabled];
 }
 
 - (CGFloat)easedValue:(CGFloat)p
@@ -263,7 +263,7 @@
 
 - (void)setText:(NSString*) text withCompletionBlock:(void (^)(void))block{
     _setTextCompletionBlock = block;
-    if (self.isMorphingEnabled) {
+    if ([self shouldAnimateSettingText]) {
         self.nextText = text ? text : @"";
         if (self.displayLinkDuration > 0) {
             [self beginMorphing];
