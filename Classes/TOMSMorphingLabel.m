@@ -156,6 +156,11 @@
 
 #pragma mark - Getters
 
+- (BOOL)isMorphingEnabled
+{
+    return _morphingEnabled && [UIView areAnimationsEnabled];
+}
+
 - (CGFloat)easedValue:(CGFloat)p
 {
     if (p < 0.5f) {
