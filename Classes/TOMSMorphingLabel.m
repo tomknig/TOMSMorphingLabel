@@ -265,6 +265,10 @@
         }
     } else {
         super.text = text;
+        if (_setTextCompletionBlock != nil) {
+            _setTextCompletionBlock();
+            _setTextCompletionBlock = nil;
+        }
     }
 }
 
