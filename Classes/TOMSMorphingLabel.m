@@ -12,6 +12,17 @@
 
 #define kTOMSKernFactorAttributeName @"kTOMSKernFactorAttributeName"
 
+/** A helper class which is used to break the strong reference cycle
+ *  between CADisplayLink and TOMSMorphingLabel. Does nothing significant,
+ *  just forwards all messages to its morphingLabel property.
+ */
+@interface TOMSMorphingLabelWeakWrapper : NSObject
+@property (nonatomic, weak, readonly) TOMSMorphingLabel *morphingLabel;
+
+- (instancetype)initWithLabel:(TOMSMorphingLabel *)label;
+
+@end
+
 @interface TOMSMorphingLabel (){
     void (^_setTextCompletionBlock)(void);
 }
@@ -78,14 +89,18 @@
     _morphingEnabled = YES;
     self.animating = NO;
     
-    self.displayLink = [CADisplayLink displayLinkWithTarget:self
-                                                   selector:@selector(tickInitial)];
-    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
-                           forMode:NSRunLoopCommonModes];
+    [self setupDisplayLinkWithSelector:@selector(tickInitial)];
     
     self.animationDuration = 0.37;
     self.characterAnimationOffset = 0.25;
     self.characterShrinkFactor = 4;
+}
+
+
+- (void)dealloc
+{
+    [_displayLink invalidate];
+    _displayLink = nil;
 }
 
 #pragma mark - Setters
@@ -144,17 +159,33 @@
         self.displayLink.paused = YES;
         CFTimeInterval duration = self.displayLink.duration;
         
-        self.displayLink = [CADisplayLink displayLinkWithTarget:self
-                                                           selector:@selector(tickMorphing)];
-        [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
-                               forMode:NSRunLoopCommonModes];
+        [self setupDisplayLinkWithSelector: @selector(tickMorphing)];
         self.displayLink.paused = YES;
         
         self.displayLinkDuration = duration;
     }
 }
 
+
+- (void)setupDisplayLinkWithSelector:(SEL)selector
+{
+    TOMSMorphingLabelWeakWrapper *displayLinkTarget = [[TOMSMorphingLabelWeakWrapper alloc] initWithLabel:self];
+    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:displayLinkTarget
+                                                             selector:selector];
+    
+    [displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                      forMode:NSRunLoopCommonModes];
+    
+    [self.displayLink invalidate];
+    self.displayLink = displayLink;
+}
+
 #pragma mark - Getters
+
+- (BOOL)shouldAnimateSettingText
+{
+    return self.isMorphingEnabled && [UIView areAnimationsEnabled];
+}
 
 - (CGFloat)easedValue:(CGFloat)p
 {
@@ -258,13 +289,14 @@
 
 - (void)setText:(NSString*) text withCompletionBlock:(void (^)(void))block{
     _setTextCompletionBlock = block;
-    if (self.isMorphingEnabled) {
+    if ([self shouldAnimateSettingText]) {
         self.nextText = text ? text : @"";
         if (self.displayLinkDuration > 0) {
             [self beginMorphing];
         }
     } else {
         super.text = text;
+        [self textDidChange];
     }
 }
 
@@ -405,16 +437,20 @@
                 self.animating = NO;
                 if (self.nextText) {
                     [self beginMorphing];
-                }
-                else{
-                    if(_setTextCompletionBlock != nil){
-                        _setTextCompletionBlock();
-                        _setTextCompletionBlock = nil;
-                    }
+                } else {
+                    [self textDidChange];
                 }
             }
         });
     });
+}
+
+- (void)textDidChange
+{
+    if(_setTextCompletionBlock != nil){
+        _setTextCompletionBlock();
+        _setTextCompletionBlock = nil;
+    }
 }
 
 - (void)tickMorphing
@@ -428,6 +464,31 @@
             }
         }
     }
+}
+
+@end
+
+@implementation TOMSMorphingLabelWeakWrapper
+
+- (instancetype)initWithLabel:(TOMSMorphingLabel *)label
+{
+    self = [super init];
+    
+    if (self) {
+        _morphingLabel = label;
+    }
+    
+    return self;
+}
+
+- (void)tickInitial
+{
+    [self.morphingLabel tickInitial];
+}
+
+- (void)tickMorphing
+{
+    [self.morphingLabel tickMorphing];
 }
 
 @end

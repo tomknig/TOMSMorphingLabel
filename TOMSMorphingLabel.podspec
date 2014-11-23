@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "TOMSMorphingLabel"
-  s.version          = "0.2.5"
+  s.version          = "0.5.0"
   s.summary          = "Configurable morphing transitions between text values of a label."
   s.homepage         = "https://github.com/TomKnig/TOMSMorphingLabel"
   s.license          = 'MIT'
