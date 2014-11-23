@@ -292,10 +292,7 @@
         }
     } else {
         super.text = text;
-        if (_setTextCompletionBlock != nil) {
-            _setTextCompletionBlock();
-            _setTextCompletionBlock = nil;
-        }
+        [self textDidChange];
     }
 }
 
@@ -436,16 +433,20 @@
                 self.animating = NO;
                 if (self.nextText) {
                     [self beginMorphing];
-                }
-                else{
-                    if(_setTextCompletionBlock != nil){
-                        _setTextCompletionBlock();
-                        _setTextCompletionBlock = nil;
-                    }
+                } else {
+                    [self textDidChange];
                 }
             }
         });
     });
+}
+
+- (void)textDidChange
+{
+    if(_setTextCompletionBlock != nil){
+        _setTextCompletionBlock();
+        _setTextCompletionBlock = nil;
+    }
 }
 
 - (void)tickMorphing
