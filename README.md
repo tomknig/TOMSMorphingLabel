@@ -15,7 +15,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 platform :ios, '7.0'
-pod "TOMSMorphingLabel", "~> 0.2.5"
+pod "TOMSMorphingLabel", "~> 0.5"
 ```
 
 ## Usage
@@ -70,6 +70,11 @@ The configureable properties are defined as follows:
 
 ## Changelog
 
+#### 0.5.0
+* broke a strong reference cycle between `CADisplayLink` and `TOMSMorphingLabel`
+* added invokation of the completion block when setting text without animations
+* respect the global `[UIView areAnimationsEnabled]` state
+
 #### 0.2.5
 * fixed a textColor glitch
 * introduced `setText:withCompletionBlock:`
@@ -99,6 +104,9 @@ The best way to contribute is by submitting a pull request or a [new Github issu
 * @itouch2 fixed a bug that caused a crash when setting text to nil in version 0.2.3
 * @waynehartman fixed text color-change glitch in version 0.2.5  
 * @cyril94440 added `setText:withCompletionBlock:` in version 0.2.5
+* @wanderwaltz broke a strong reference cycle between `CADisplayLink` and `TOMSMorphingLabel` in version 0.5.0
+* @wanderwaltz added invokation of the completion block when setting text without animations in version 0.5.0
+* @wanderwaltz made `TOMSMorphingLabel` respect the global `[UIView areAnimationsEnabled]` state in version 0.5.0
 
 ## Author
 

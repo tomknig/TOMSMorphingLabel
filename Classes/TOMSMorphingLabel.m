@@ -23,7 +23,6 @@
 
 @end
 
-
 @interface TOMSMorphingLabel (){
     void (^_setTextCompletionBlock)(void);
 }
@@ -469,7 +468,6 @@
 
 @end
 
-
 @implementation TOMSMorphingLabelWeakWrapper
 
 - (instancetype)initWithLabel:(TOMSMorphingLabel *)label
@@ -494,4 +492,3 @@
 }
 
 @end
-
