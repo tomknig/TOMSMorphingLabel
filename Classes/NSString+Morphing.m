@@ -8,6 +8,10 @@
 
 #import "NSString+Morphing.h"
 
+NSString * const kTOMSDictionaryKeyMergedString = @"mergedString";
+NSString * const kTOMSDictionaryKeyAdditionRanges = @"additionRanges";
+NSString * const kTOMSDictionaryKeyDeletionRanges = @"deletionRanges";
+
 @implementation NSString (Morphing)
 
 - (NSUInteger)toms_unicodeLength
