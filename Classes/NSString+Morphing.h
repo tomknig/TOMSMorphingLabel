@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define kTOMSDictionaryKeyMergedString @"mergedString"
-#define kTOMSDictionaryKeyAdditionRanges @"additionRanges"
-#define kTOMSDictionaryKeyDeletionRanges @"deletionRanges"
+extern NSString * const kTOMSDictionaryKeyMergedString;
+extern NSString * const kTOMSDictionaryKeyAdditionRanges;
+extern NSString * const kTOMSDictionaryKeyDeletionRanges;
 
 @interface NSString (Morphing)
 

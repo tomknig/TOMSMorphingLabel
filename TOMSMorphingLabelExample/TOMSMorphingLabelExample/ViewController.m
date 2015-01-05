@@ -10,6 +10,7 @@
 #import <TOMSMorphingLabel/TOMSMorphingLabel.h>
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet TOMSMorphingLabel *morphingLabel;
 @property (nonatomic, assign) NSInteger idx;
 @property (nonatomic, strong) NSArray *textValues;
 @end
@@ -19,21 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.idx = 0;
-    
-    CGRect frame = CGRectMake(0, 42, self.view.frame.size.width, 42);
-    TOMSMorphingLabel *label = [[TOMSMorphingLabel alloc] initWithFrame:frame];
-    
-    label.font = [UIFont systemFontOfSize:32];
-    label.textColor = [UIColor colorWithRed:0.102 green:0.839 blue:0.992 alpha: 1];
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    [self.view addSubview:label];
-    [label setText:@"Test" withCompletionBlock:^{
-        NSLog(@"First label animation completed");
-    }];
-    
-    [self performSelector:@selector(toggleTextForLabel:) withObject:label afterDelay:2];
+    _idx = 0;
+    [self toggleText];
 }
 
 #pragma mark - toggling text
@@ -60,12 +48,13 @@
     _idx = MAX(0, MIN(idx, idx % [self.textValues count]));
 }
 
-- (void)toggleTextForLabel:(UILabel *)label
+- (void)toggleText
 {
-    label.text = self.textValues[self.idx++];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self toggleTextForLabel:label];
-    });
+    self.morphingLabel.text = self.textValues[self.idx++];
+
+    [self performSelector:@selector(toggleText)
+               withObject:nil
+               afterDelay:2];
 }
 
 @end

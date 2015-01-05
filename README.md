@@ -70,6 +70,9 @@ The configureable properties are defined as follows:
 
 ## Changelog
 
+#### 0.5.1
+* made custom configureable properties accessible by Interface Builder
+
 #### 0.5.0
 * broke a strong reference cycle between `CADisplayLink` and `TOMSMorphingLabel`
 * added invokation of the completion block when setting text without animations
@@ -107,6 +110,7 @@ The best way to contribute is by submitting a pull request or a [new Github issu
 * @wanderwaltz broke a strong reference cycle between `CADisplayLink` and `TOMSMorphingLabel` in version 0.5.0
 * @wanderwaltz added invokation of the completion block when setting text without animations in version 0.5.0
 * @wanderwaltz made `TOMSMorphingLabel` respect the global `[UIView areAnimationsEnabled]` state in version 0.5.0
+* @fcanas made custom configureable properties accessible by Interface Builder
 
 ## Author
 
