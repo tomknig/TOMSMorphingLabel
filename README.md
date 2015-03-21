@@ -105,7 +105,7 @@ The best way to contribute is by submitting a pull request or a [new Github issu
 * @andrebraga added support for iOS6 in version 0.2.1
 * @stepanhruda added property to disable morphing in version 0.2.2
 * @itouch2 fixed a bug that caused a crash when setting text to nil in version 0.2.3
-* @waynehartman fixed text color-change glitch in version 0.2.5  
+* @waynehartman fixed text color-change glitch in version 0.2.5
 * @cyril94440 added `setText:withCompletionBlock:` in version 0.2.5
 * @wanderwaltz broke a strong reference cycle between `CADisplayLink` and `TOMSMorphingLabel` in version 0.5.0
 * @wanderwaltz added invokation of the completion block when setting text without animations in version 0.5.0
