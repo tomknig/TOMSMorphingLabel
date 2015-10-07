@@ -369,6 +369,10 @@
             NSInteger attributionIndex = (NSInteger)(offset - entryPoint);
             attributionIndex = MIN(self.numberOfAttributionStages - 1, MAX(0, attributionIndex));
             
+            if (range.location + range.length > aString.length) {
+                continue;
+            }
+
             NSMutableDictionary *attributionStage = self.attributionStages[attributionIndex];
             CGFloat kernFactor = [attributionStage[kTOMSKernFactorAttributeName] floatValue];
             NSString *character = [aString substringWithRange:range];
