@@ -46,10 +46,10 @@ Note that the label will execute only one morph transition at a time. If the tex
 ## Customization
 
 TOMSMorphingLabel provides the possibility to configure the morphing transitions look and feel.
-The configureable properties are defined as follows:
+The configurable properties are defined as follows:
 
 <table>
-  <caption>configureable properties</caption>
+  <caption>configurable properties</caption>
   <tr>
     <td><tt>animationDuration: CGFloat</tt></td>
     <td>Time that elapses between the setting of a new text value and the end of the morphing transition. Default: 0.37</td>
@@ -71,7 +71,7 @@ The configureable properties are defined as follows:
 ## Changelog
 
 #### 0.5.1
-* made custom configureable properties accessible by Interface Builder
+* made custom configurable properties accessible by Interface Builder
 
 #### 0.5.0
 * broke a strong reference cycle between `CADisplayLink` and `TOMSMorphingLabel`
@@ -110,7 +110,7 @@ The best way to contribute is by submitting a pull request or a [new Github issu
 * @wanderwaltz broke a strong reference cycle between `CADisplayLink` and `TOMSMorphingLabel` in version 0.5.0
 * @wanderwaltz added invokation of the completion block when setting text without animations in version 0.5.0
 * @wanderwaltz made `TOMSMorphingLabel` respect the global `[UIView areAnimationsEnabled]` state in version 0.5.0
-* @fcanas made custom configureable properties accessible by Interface Builder
+* @fcanas made custom configurable properties accessible by Interface Builder
 
 ## Author
 
