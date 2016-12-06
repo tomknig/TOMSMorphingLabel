@@ -282,6 +282,20 @@
 
 #pragma mark - Morphing: Atomic Getters
 
+- (void)setText:(NSString *)text animated:(BOOL)animated
+{
+    if (!animated)
+    {
+        NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+        self.attributedText = attributedText;
+        return;
+    }
+    else
+    {
+        [self setText:text];
+    }
+}
+
 - (void)setText:(NSString *)text
 {
     [self setText:text withCompletionBlock:nil];

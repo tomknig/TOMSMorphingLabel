@@ -20,4 +20,6 @@
 - (void)setTextWithoutMorphing:(NSString *)text;
 - (void)setText:(NSString*)text withCompletionBlock:(void (^)(void))block;
 
+- (void)setText:(NSString *)text animated:(BOOL)animated;
+
 @end
