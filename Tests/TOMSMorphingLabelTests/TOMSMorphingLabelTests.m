@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <TOMSMorphingLabel/TOMSMorphingLabel.h>
+#import <TOMSMorphingLabel.h>
 
 @interface TOMSMorphingLabelTests : XCTestCase
 

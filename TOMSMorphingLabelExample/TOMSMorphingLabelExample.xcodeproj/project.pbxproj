@@ -13,7 +13,6 @@
 		A633320A194B128300741D78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6333209194B128300741D78 /* ViewController.m */; };
 		A633320D194B128300741D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A633320B194B128300741D78 /* Main.storyboard */; };
 		A633320F194B128300741D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A633320E194B128300741D78 /* Images.xcassets */; };
-		A6F17823194B2A920050E5DF /* TOMSMorphingLabelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F17822194B2A920050E5DF /* TOMSMorphingLabelTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +51,6 @@
 		A633320C194B128300741D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A633320E194B128300741D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6333214194B128300741D78 /* TOMSMorphingLabelExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOMSMorphingLabelExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6333219194B128300741D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6F17822194B2A920050E5DF /* TOMSMorphingLabelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabelTests.m; sourceTree = "<group>"; };
 		B8541747CA2749838112C6CE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				A6333200194B128300741D78 /* TOMSMorphingLabelExample */,
-				A6333217194B128300741D78 /* TOMSMorphingLabelExampleTests */,
 				A63331FF194B128300741D78 /* Products */,
 				B8541747CA2749838112C6CE /* Pods.xcconfig */,
 				5A5DDDEE93334B7FB099CF76 /* Frameworks */,
@@ -119,23 +115,6 @@
 			children = (
 				A6333202194B128300741D78 /* Info.plist */,
 				A6333203194B128300741D78 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A6333217194B128300741D78 /* TOMSMorphingLabelExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6F17822194B2A920050E5DF /* TOMSMorphingLabelTests.m */,
-				A6333218194B128300741D78 /* Supporting Files */,
-			);
-			path = TOMSMorphingLabelExampleTests;
-			sourceTree = "<group>";
-		};
-		A6333218194B128300741D78 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A6333219194B128300741D78 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -217,6 +196,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -298,7 +278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F17823194B2A920050E5DF /* TOMSMorphingLabelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
