@@ -3,45 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F003CA55B3D41768676B807 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D92B98879D6419CAEC10F04 /* libPods.a */; };
 		A6333204194B128300741D78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6333203194B128300741D78 /* main.m */; };
 		A6333207194B128300741D78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6333206194B128300741D78 /* AppDelegate.m */; };
 		A633320A194B128300741D78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6333209194B128300741D78 /* ViewController.m */; };
 		A633320D194B128300741D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A633320B194B128300741D78 /* Main.storyboard */; };
 		A633320F194B128300741D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A633320E194B128300741D78 /* Images.xcassets */; };
-		A6F17823194B2A920050E5DF /* TOMSMorphingLabelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F17822194B2A920050E5DF /* TOMSMorphingLabelTests.m */; };
+		DC2FBE7326CB1E7C009125A9 /* TOMSMorphingLabel in Frameworks */ = {isa = PBXBuildFile; productRef = DC2FBE7226CB1E7C009125A9 /* TOMSMorphingLabel */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A6333215194B128300741D78 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A63331F6194B128300741D78 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A63331FD194B128300741D78;
-			remoteInfo = TOMSMorphingLabelExample;
-		};
-		A6F17824194B2A9B0050E5DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A63331F6194B128300741D78 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A63331FD194B128300741D78;
-			remoteInfo = TOMSMorphingLabelExample;
-		};
-		A6F17826194B2A9B0050E5DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A63331F6194B128300741D78 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A63331FD194B128300741D78;
-			remoteInfo = TOMSMorphingLabelExample;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		7D92B98879D6419CAEC10F04 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63331FE194B128300741D78 /* TOMSMorphingLabelExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOMSMorphingLabelExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6333202194B128300741D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6333203194B128300741D78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -51,10 +25,7 @@
 		A6333209194B128300741D78 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A633320C194B128300741D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A633320E194B128300741D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A6333214194B128300741D78 /* TOMSMorphingLabelExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOMSMorphingLabelExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6333219194B128300741D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6F17822194B2A920050E5DF /* TOMSMorphingLabelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabelTests.m; sourceTree = "<group>"; };
-		B8541747CA2749838112C6CE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		DCFD02A126CB1E1B00ED3D4A /* TOMSMorphingLabel */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TOMSMorphingLabel; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,36 +33,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F003CA55B3D41768676B807 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6333211194B128300741D78 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DC2FBE7326CB1E7C009125A9 /* TOMSMorphingLabel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A5DDDEE93334B7FB099CF76 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7D92B98879D6419CAEC10F04 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A63331F5194B128300741D78 = {
 			isa = PBXGroup;
 			children = (
+				DCFD02A126CB1E1B00ED3D4A /* TOMSMorphingLabel */,
 				A6333200194B128300741D78 /* TOMSMorphingLabelExample */,
-				A6333217194B128300741D78 /* TOMSMorphingLabelExampleTests */,
 				A63331FF194B128300741D78 /* Products */,
-				B8541747CA2749838112C6CE /* Pods.xcconfig */,
-				5A5DDDEE93334B7FB099CF76 /* Frameworks */,
+				DC2FBE7126CB1E7C009125A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				A63331FE194B128300741D78 /* TOMSMorphingLabelExample.app */,
-				A6333214194B128300741D78 /* TOMSMorphingLabelExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,23 +77,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A6333217194B128300741D78 /* TOMSMorphingLabelExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6F17822194B2A920050E5DF /* TOMSMorphingLabelTests.m */,
-				A6333218194B128300741D78 /* Supporting Files */,
-			);
-			path = TOMSMorphingLabelExampleTests;
-			sourceTree = "<group>";
-		};
-		A6333218194B128300741D78 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A6333219194B128300741D78 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		A6D13A29194B13C800587BAB /* Boilerplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +89,13 @@
 			name = Boilerplate;
 			sourceTree = "<group>";
 		};
+		DC2FBE7126CB1E7C009125A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,40 +103,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A633321E194B128300741D78 /* Build configuration list for PBXNativeTarget "TOMSMorphingLabelExample" */;
 			buildPhases = (
-				AFA070D24DFC448A84C1628F /* Check Pods Manifest.lock */,
 				A63331FA194B128300741D78 /* Sources */,
 				A63331FB194B128300741D78 /* Frameworks */,
 				A63331FC194B128300741D78 /* Resources */,
-				A910B2D820074AD1AC6AB7E4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TOMSMorphingLabelExample;
+			packageProductDependencies = (
+				DC2FBE7226CB1E7C009125A9 /* TOMSMorphingLabel */,
+			);
 			productName = TOMSMorphingLabelExample;
 			productReference = A63331FE194B128300741D78 /* TOMSMorphingLabelExample.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A6333213194B128300741D78 /* TOMSMorphingLabelExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6333221194B128300741D78 /* Build configuration list for PBXNativeTarget "TOMSMorphingLabelExampleTests" */;
-			buildPhases = (
-				A6333210194B128300741D78 /* Sources */,
-				A6333211194B128300741D78 /* Frameworks */,
-				A6333212194B128300741D78 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A6333216194B128300741D78 /* PBXTargetDependency */,
-				A6F17825194B2A9B0050E5DF /* PBXTargetDependency */,
-				A6F17827194B2A9B0050E5DF /* PBXTargetDependency */,
-			);
-			name = TOMSMorphingLabelExampleTests;
-			productName = TOMSMorphingLabelExampleTests;
-			productReference = A6333214194B128300741D78 /* TOMSMorphingLabelExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -206,15 +131,11 @@
 					A63331FD194B128300741D78 = {
 						CreatedOnToolsVersion = 6.0;
 					};
-					A6333213194B128300741D78 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = A63331FD194B128300741D78;
-					};
 				};
 			};
 			buildConfigurationList = A63331F9194B128300741D78 /* Build configuration list for PBXProject "TOMSMorphingLabelExample" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -226,7 +147,6 @@
 			projectRoot = "";
 			targets = (
 				A63331FD194B128300741D78 /* TOMSMorphingLabelExample */,
-				A6333213194B128300741D78 /* TOMSMorphingLabelExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -241,47 +161,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6333212194B128300741D78 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		A910B2D820074AD1AC6AB7E4 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AFA070D24DFC448A84C1628F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A63331FA194B128300741D78 /* Sources */ = {
@@ -294,33 +174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6333210194B128300741D78 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F17823194B2A920050E5DF /* TOMSMorphingLabelTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A6333216194B128300741D78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A63331FD194B128300741D78 /* TOMSMorphingLabelExample */;
-			targetProxy = A6333215194B128300741D78 /* PBXContainerItemProxy */;
-		};
-		A6F17825194B2A9B0050E5DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A63331FD194B128300741D78 /* TOMSMorphingLabelExample */;
-			targetProxy = A6F17824194B2A9B0050E5DF /* PBXContainerItemProxy */;
-		};
-		A6F17827194B2A9B0050E5DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A63331FD194B128300741D78 /* TOMSMorphingLabelExample */;
-			targetProxy = A6F17826194B2A9B0050E5DF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A633320B194B128300741D78 /* Main.storyboard */ = {
@@ -412,63 +266,29 @@
 		};
 		A633321F194B128300741D78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8541747CA2749838112C6CE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TOMSMorphingLabelExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		A6333220194B128300741D78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8541747CA2749838112C6CE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TOMSMorphingLabelExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A6333222194B128300741D78 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8541747CA2749838112C6CE /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TOMSMorphingLabelExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		A6333223194B128300741D78 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8541747CA2749838112C6CE /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TOMSMorphingLabelExample.app/TOMSMorphingLabelExample";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TOMSMorphingLabelExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
 		};
@@ -493,16 +313,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6333221194B128300741D78 /* Build configuration list for PBXNativeTarget "TOMSMorphingLabelExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6333222194B128300741D78 /* Debug */,
-				A6333223194B128300741D78 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC2FBE7226CB1E7C009125A9 /* TOMSMorphingLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TOMSMorphingLabel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A63331F6194B128300741D78 /* Project object */;
 }

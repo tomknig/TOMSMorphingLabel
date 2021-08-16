@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '6.0'
   s.requires_arc = true
 
-  s.source_files = 'Classes/*.{h,m}'
+  s.source_files = ['Sources/TOMSMorphingLabel/', 'Sources/TOMSMorphingLabel/include']
 end
