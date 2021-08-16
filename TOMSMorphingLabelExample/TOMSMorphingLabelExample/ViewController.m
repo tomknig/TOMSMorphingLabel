@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <TOMSMorphingLabel/TOMSMorphingLabel.h>
+#import <TOMSMorphingLabel.h>
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet TOMSMorphingLabel *morphingLabel;
